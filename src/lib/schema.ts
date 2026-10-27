@@ -54,6 +54,26 @@ const BaseItemSchema = z.object({
   featured: z.boolean().default(false),
 })
 
+export const RoadmapStepSchema = z
+  .object({
+    title: Text,
+    description: Text.optional(),
+    outcome: Text.optional(),
+    effort: Text.optional(),
+    optional: z.boolean().default(false),
+    resources: z.array(ResourceRefSchema).default([]),
+  })
+  .strict()
+
+export const RoadmapTrackSchema = z
+  .object({
+    id: Id,
+    title: Text,
+    description: Text.optional(),
+    steps: z.array(RoadmapStepSchema).min(1),
+  })
+  .strict()
+
 export const ItemSchema = z.discriminatedUnion('kind', [
   BaseItemSchema.extend({
     kind: z.literal('site'),
@@ -67,17 +87,10 @@ export const ItemSchema = z.discriminatedUnion('kind', [
   BaseItemSchema.extend({
     kind: z.literal('roadmap'),
     estimatedEffort: Text.optional(),
-    steps: z
-      .array(
-        z
-          .object({
-            title: Text,
-            description: Text.optional(),
-            resources: z.array(ResourceRefSchema).default([]),
-          })
-          .strict(),
-      )
-      .min(1),
+    /** 有独立路由页时在列表中引导跳转，而不是只靠折叠展开 */
+    dedicatedPage: z.boolean().default(false),
+    steps: z.array(RoadmapStepSchema).min(1),
+    tracks: z.array(RoadmapTrackSchema).optional(),
   }).strict(),
 ])
 
@@ -126,7 +139,6 @@ export const LinkDataSchema = z
         return
       }
 
-      // 先检查完整父级链，避免循环关系被误报为普通的深度超限。
       const visited = new Set([topic.id])
       let parentId: string | undefined = topic.parentId
       let depth = 1
@@ -170,6 +182,8 @@ export const LinkDataSchema = z
   })
 
 export type ResourceRef = z.infer<typeof ResourceRefSchema>
+export type RoadmapStep = z.infer<typeof RoadmapStepSchema>
+export type RoadmapTrack = z.infer<typeof RoadmapTrackSchema>
 export type Item = z.infer<typeof ItemSchema>
 export type Topic = z.infer<typeof TopicSchema>
 export type LinkData = z.infer<typeof LinkDataSchema>

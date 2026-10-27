@@ -1,0 +1,160 @@
+{
+  "id": "solana-dev-path",
+  "topic": "solana",
+  "kind": "roadmap",
+  "title": "Solana 开发路径（含分叉）",
+  "description": "共享基础之后，按目标进入程序开发、客户端/dApp 或黑客松赛道",
+  "audience": "建议具备编程基础；Rust 基础可显著降低程序分支难度",
+  "estimatedEffort": "主路径约 20–30 小时；单条分支再加 15–40 小时",
+  "featured": true,
+  "dedicatedPage": true,
+  "tags": ["资源", "路线图", "开发", "入门"],
+  "steps": [
+    {
+      "title": "账户、交易与程序模型",
+      "description": "建立 Solana 特有的账户所有权与指令执行心智",
+      "outcome": "能讲清状态存在哪里、一笔交易如何改状态",
+      "effort": "约 6–10 小时",
+      "resources": [
+        {
+          "title": "Solana 账户模型",
+          "url": "https://solana.com/docs/core/accounts",
+          "access": "free"
+        },
+        {
+          "title": "交易与指令",
+          "url": "https://solana.com/docs/core/transactions",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "本地工具链与第一个读写练习",
+      "description": "装好 CLI / 开发环境，完成最小状态读写",
+      "outcome": "本地能构建并跑通一个最小程序或等价练习",
+      "effort": "约 8–12 小时",
+      "resources": [
+        {
+          "title": "Solana 程序",
+          "url": "https://solana.com/docs/core/programs",
+          "access": "free"
+        },
+        {
+          "title": "Solana Playground",
+          "url": "https://beta.solpg.io/",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "选择分支目标",
+      "description": "在程序、客户端或黑客松三条赛道中选一条深入，可稍后补其他分支",
+      "outcome": "写下本阶段目标与验收标准（例如：部署一个程序 / 完成一个前端调用 / 提交一次黑客松）",
+      "effort": "约 1–2 小时",
+      "resources": []
+    }
+  ],
+  "tracks": [
+    {
+      "id": "on-chain",
+      "title": "链上程序",
+      "description": "以 Anchor/原生程序为主，强调账户设计与指令接口",
+      "steps": [
+        {
+          "title": "账户设计与指令接口",
+          "description": "把业务状态拆成账户布局，并定义清晰指令",
+          "outcome": "能画出账户关系图并对应到指令",
+          "effort": "约 8–12 小时",
+          "resources": [
+            {
+              "title": "Solana Cookbook",
+              "url": "https://solana.com/developers/cookbook",
+              "access": "free"
+            }
+          ]
+        },
+        {
+          "title": "测试与部署",
+          "description": "本地测试、devnet 部署与基础排错",
+          "outcome": "devnet 上可调用的程序 + 简短测试说明",
+          "effort": "约 10–16 小时",
+          "resources": [
+            {
+              "title": "Solana 文档",
+              "url": "https://solana.com/docs",
+              "access": "free"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "client",
+      "title": "客户端 / dApp",
+      "description": "钱包连接、交易构造与读取链上状态",
+      "steps": [
+        {
+          "title": "钱包与交易发送",
+          "description": "连接钱包、签名并发送交易",
+          "outcome": "页面上完成一次成功的链上交互",
+          "effort": "约 8–12 小时",
+          "resources": [
+            {
+              "title": "Solana Cookbook",
+              "url": "https://solana.com/developers/cookbook",
+              "access": "free"
+            }
+          ]
+        },
+        {
+          "title": "读取与展示状态",
+          "description": "订阅或轮询账户数据并在 UI 呈现",
+          "outcome": "关键状态变化能在界面反映出来",
+          "effort": "约 8–14 小时",
+          "resources": [
+            {
+              "title": "Explorer",
+              "url": "https://explorer.solana.com/",
+              "access": "free"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hackathon",
+      "title": "黑客松赛道",
+      "description": "在有限时间内完成可演示作品与提交材料",
+      "steps": [
+        {
+          "title": "选题与范围控制",
+          "description": "选一个 48–72 小时内可演示的切口，写清用户与验收",
+          "outcome": "一页范围说明：做什么 / 不做什么 / 演示路径",
+          "effort": "约 3–6 小时",
+          "resources": []
+        },
+        {
+          "title": "最小可演示版本",
+          "description": "优先打通主路径，再补边缘功能",
+          "outcome": "可录屏的演示 + 基本 README",
+          "effort": "约 20–30 小时",
+          "resources": [
+            {
+              "title": "Solana Playground",
+              "url": "https://beta.solpg.io/",
+              "access": "free"
+            }
+          ]
+        },
+        {
+          "title": "提交与复盘",
+          "description": "按组委会清单提交，并记录下一轮要补的技术债",
+          "outcome": "提交回执或清单勾选记录 + 复盘笔记",
+          "effort": "约 3–5 小时",
+          "optional": true,
+          "resources": []
+        }
+      ]
+    }
+  ]
+}

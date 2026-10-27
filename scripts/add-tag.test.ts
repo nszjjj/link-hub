@@ -1,12 +1,11 @@
 import { execFileSync } from 'node:child_process'
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
+import { tsxCli } from '../test/tsx'
 import { registerTags } from './add-tag'
 
-const project = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const roots: string[] = []
 const vocabulary = (root: string) => join(root, 'src/lib/tagVocabulary.ts')
 
@@ -30,8 +29,9 @@ export const TAG_ALIASES = { pdf: 'PDF' }
 function importedTags(root: string): string[] {
   return JSON.parse(
     execFileSync(
-      join(project, 'node_modules/.bin/tsx'),
+      process.execPath,
       [
+        tsxCli,
         '-e',
         `import { ALLOWED_TAGS } from ${JSON.stringify(vocabulary(root))}; process.stdout.write(JSON.stringify(ALLOWED_TAGS))`,
       ],

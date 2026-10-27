@@ -1,0 +1,13 @@
+{
+  "id": "xquant-beginner",
+  "topic": "quant",
+  "kind": "site",
+  "title": "XQuant：人人都是量化交易员",
+  "description": "开源书稿，用 Python 和 AI 辅助编程从零跑通选 ETF、回测与风控流程",
+  "url": "https://xingwudao.github.io/xquant-beginner/",
+  "tags": [
+    "资源",
+    "书籍",
+    "入门"
+  ]
+}

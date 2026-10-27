@@ -4,7 +4,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { makeData, makeHierarchyData } from '../test/fixtures'
 import App from './App'
 
-beforeEach(() => window.history.replaceState(null, '', '/link-hub/'))
+// vitest 下 BASE_URL 固定为 "/"，地址需与 BrowserRouter 的 basename 保持一致
+const BASE = import.meta.env.BASE_URL
+
+beforeEach(() => window.history.replaceState(null, '', BASE))
 afterEach(() => {
   cleanup()
   vi.unstubAllGlobals()
@@ -12,14 +15,17 @@ afterEach(() => {
 const response = () => new Response(JSON.stringify(makeData()))
 
 describe('页面组装', () => {
-  it('父主题和子主题形成完整标题层级，通用内容与子级条目只展示一次', async () => {
+  it('父主题和子主题形成完整标题层级，有 Hub 的子主题只展示入口', async () => {
     vi.stubGlobal('fetch', async () => new Response(JSON.stringify(makeHierarchyData())))
     render(<App />)
     await screen.findByRole('heading', { name: 'Web3', level: 2 })
     expect(screen.getByRole('heading', { name: '通用资源', level: 3 })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Solana', level: 3 })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Ethereum', level: 3 })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'Solana 官方文档', level: 4 })).toBeTruthy()
+    // Solana 有独立 Hub：首页只展示站内入口，条目不重复罗列
+    expect(screen.getByRole('heading', { name: 'Solana 专题', level: 4 })).toBeTruthy()
+    expect(screen.queryByRole('heading', { name: 'Solana 官方文档' })).toBeNull()
+    expect(screen.getByRole('heading', { name: '以太坊书单', level: 4 })).toBeTruthy()
     expect(screen.getAllByRole('heading', { name: '交易书单' })).toHaveLength(1)
     expect(screen.queryByRole('heading', { name: '空子主题' })).toBeNull()
     fireEvent.click(screen.getAllByRole('button', { name: '展开书单' })[0])
@@ -30,7 +36,8 @@ describe('页面组装', () => {
     vi.stubGlobal('fetch', async () => new Response(JSON.stringify(makeHierarchyData())))
     render(<App />)
     await screen.findByRole('heading', { name: 'Solana', level: 3 })
-    fireEvent.click(screen.getByRole('button', { name: '展开全部' }))
+    fireEvent.click(screen.getAllByRole('button', { name: '展开书单' })[0])
+    expect(screen.getByRole('button', { name: '收起书单' })).toBeTruthy()
     const search = screen.getAllByRole('searchbox', { name: '搜索资源' })[0]
     fireEvent.change(search, { target: { value: 'Solidity' } })
     expect(screen.getByRole('heading', { name: 'Web3', level: 2 })).toBeTruthy()
@@ -41,24 +48,25 @@ describe('页面组装', () => {
     expect(screen.getByLabelText('Solana：1 个匹配条目，共 2 个').textContent).toContain('1 / 2')
     expect(screen.queryByRole('navigation', { name: 'Web3 子主题' })).toBeNull()
     fireEvent.change(search, { target: { value: '' } })
-    expect(screen.getByRole('button', { name: '收起路线' }).getAttribute('aria-expanded')).toBe(
+    expect(screen.getByRole('button', { name: '收起书单' }).getAttribute('aria-expanded')).toBe(
       'true',
     )
-    expect(screen.getByRole('link', { name: /账户模型/ })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: /Market Basics/, level: 5 })).toBeTruthy()
   })
   it('子主题锚点保留筛选参数并将键盘焦点移到对应标题', async () => {
-    window.history.replaceState({ source: 'share' }, '', '/link-hub/?tags=资源&from=share')
+    window.history.replaceState({ source: 'share' }, '', `${BASE}?tags=资源&from=share`)
     const originalScroll = HTMLElement.prototype.scrollIntoView
     HTMLElement.prototype.scrollIntoView = vi.fn()
     try {
       vi.stubGlobal('fetch', async () => new Response(JSON.stringify(makeHierarchyData())))
       render(<App />)
       const navigation = await screen.findByRole('navigation', { name: 'Web3 子主题' })
+      const stateBeforeClick = window.history.state
       fireEvent.click(within(navigation).getByRole('link', { name: 'Solana' }))
       expect(window.location.hash).toBe('#topic-solana')
       expect(new URLSearchParams(window.location.search).get('tags')).toBe('资源')
       expect(new URLSearchParams(window.location.search).get('from')).toBe('share')
-      expect(window.history.state).toEqual({ source: 'share' })
+      expect(window.history.state).toEqual(stateBeforeClick)
       expect(document.activeElement).toBe(screen.getByRole('heading', { name: 'Solana', level: 3 }))
     } finally {
       HTMLElement.prototype.scrollIntoView = originalScroll
@@ -137,7 +145,7 @@ describe('页面组装', () => {
   })
 
   it('可直接进入子主题并切换主题，保留标签，范围失效时有明确恢复入口', async () => {
-    window.history.replaceState(null, '', '/link-hub/?topic=missing&tags=工具&match=grouped')
+    window.history.replaceState(null, '', `${BASE}?topic=missing&tags=工具&match=grouped`)
     vi.stubGlobal('fetch', async () => new Response(JSON.stringify(makeHierarchyData())))
     render(<App />)
     expect(await screen.findByText('此主题已不存在')).toBeTruthy()

@@ -1,0 +1,15 @@
+{
+  "id": "rust-by-example",
+  "topic": "rust",
+  "kind": "site",
+  "title": "Rust by Example",
+  "description": "用可编译的示例讲解 Rust 语法、类型、所有权与标准库，适合配合官方文档动手练习",
+  "audience": "适合已开始学习 Rust、希望参考示例的开发者",
+  "url": "https://doc.rust-lang.org/rust-by-example/",
+  "tags": [
+    "资源",
+    "教程",
+    "入门",
+    "开发"
+  ]
+}

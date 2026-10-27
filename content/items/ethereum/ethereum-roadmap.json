@@ -6,10 +6,19 @@
   "description": "先理解账户与交易，再学习智能合约并完成本地实践",
   "audience": "建议具备编程基础",
   "estimatedEffort": "约 20–30 小时，按个人进度调整",
+  "featured": true,
+  "tags": [
+    "资源",
+    "路线图",
+    "入门",
+    "开发"
+  ],
   "steps": [
     {
       "title": "账户与交易基础",
       "description": "认识账户、交易和执行环境",
+      "outcome": "能区分 EOA 与合约账户，并描述一笔交易的生命周期",
+      "effort": "约 4–6 小时",
       "resources": [
         {
           "title": "以太坊开发者文档",
@@ -21,6 +30,8 @@
     {
       "title": "智能合约入门",
       "description": "了解 Solidity、合约状态和调用方式",
+      "outcome": "能读懂简单合约，并说明状态如何被修改",
+      "effort": "约 8–12 小时",
       "resources": [
         {
           "title": "智能合约简介",
@@ -32,16 +43,9 @@
     {
       "title": "动手实践",
       "description": "在本地环境实现一个简单合约，记录测试与学习结果",
+      "outcome": "完成本地部署与一次成功调用，并留下笔记",
+      "effort": "约 8–12 小时",
       "resources": []
     }
-  ],
-  "tags": [
-    "资源",
-    "路线图",
-    "入门",
-    "免费",
-    "中文",
-    "开发"
-  ],
-  "featured": true
+  ]
 }

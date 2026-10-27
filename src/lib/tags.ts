@@ -14,7 +14,6 @@ export function getResourceTags(resource: ResourceRef): string[] {
   const format = resource.format ?? resource.file?.split('.').pop()?.toLowerCase()
   if (format === 'pdf') tags.push('PDF')
   if (format === 'epub') tags.push('EPUB')
-  if (resource.access === 'free') tags.push('免费')
   if (resource.access === 'paid') tags.push('付费')
   return tags
 }

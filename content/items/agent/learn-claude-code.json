@@ -1,0 +1,15 @@
+{
+  "id": "learn-claude-code",
+  "topic": "agent",
+  "kind": "site",
+  "title": "Learn Claude Code",
+  "description": "从零实现 Claude Code 式 Agent Harness 的教程，覆盖工具调用、权限、上下文压缩与多智能体",
+  "audience": "适合想理解智能体工程内部实现的开发者",
+  "url": "https://github.com/shareAI-lab/learn-claude-code",
+  "tags": [
+    "资源",
+    "教程",
+    "进阶",
+    "GitHub 仓库"
+  ]
+}

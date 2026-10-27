@@ -31,25 +31,56 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: #f8f9fb;
-  --foreground: #20242b;
+  --radius: 0.625rem;
+
+  /* Light — cool, refined, low fatigue */
+  --background: #f4f6f9;
+  --foreground: #1a1f2c;
   --card: #ffffff;
-  --card-foreground: #20242b;
+  --card-foreground: #1a1f2c;
   --popover: #ffffff;
-  --popover-foreground: #20242b;
-  --primary: #586783;
+  --popover-foreground: #1a1f2c;
+  --primary: #4f6bed;
   --primary-foreground: #ffffff;
-  --secondary: #f0f2f5;
-  --secondary-foreground: #667080;
-  --muted: #f0f2f5;
-  --muted-foreground: #667080;
-  --accent: #edf0f5;
-  --accent-foreground: #586783;
-  --destructive: #a94c50;
-  --border: #e3e6eb;
-  --input: #dce0e7;
-  --ring: #74829b;
+  --secondary: #eef1f6;
+  --secondary-foreground: #4a5568;
+  --muted: #eef1f6;
+  --muted-foreground: #64748b;
+  --accent: #e8edf8;
+  --accent-foreground: #3b4fd4;
+  --destructive: #dc4b4b;
+  --border: #e2e8f0;
+  --input: #dce3ee;
+  --ring: #4f6bed;
+
+  /* Soft elevation for light mode */
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
+  --shadow-card-hover: 0 4px 12px rgb(15 23 42 / 0.08), 0 2px 4px rgb(15 23 42 / 0.04);
+}
+
+.dark {
+  /* Dark — designed surfaces, not inverted */
+  --background: #0f1219;
+  --foreground: #e8ecf4;
+  --card: #171b24;
+  --card-foreground: #e8ecf4;
+  --popover: #1c212c;
+  --popover-foreground: #e8ecf4;
+  --primary: #7b93ff;
+  --primary-foreground: #0f1219;
+  --secondary: #1e2430;
+  --secondary-foreground: #a0aec0;
+  --muted: #1e2430;
+  --muted-foreground: #94a3b8;
+  --accent: #1f2740;
+  --accent-foreground: #a5b4fc;
+  --destructive: #f07178;
+  --border: #2a3142;
+  --input: #2a3142;
+  --ring: #7b93ff;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 0 1px rgb(255 255 255 / 0.03);
+  --shadow-card-hover: 0 8px 24px rgb(0 0 0 / 0.4), 0 0 0 1px rgb(255 255 255 / 0.06);
 }
 
 @layer base {
@@ -58,14 +89,45 @@
   }
   body {
     @apply bg-background font-sans text-foreground antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Smooth theme transitions for interactive surfaces */
+  .theme-transition,
+  .theme-transition * {
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.2s ease,
+      box-shadow 0.25s ease,
+      transform 0.2s ease;
   }
 }
 
 @layer utilities {
-  /* 系统选择减弱动效时，连同基础组件的折叠与占位动画一起关闭。 */
   @media (prefers-reduced-motion: reduce) {
     * {
       @apply animate-none! transition-none!;
+    }
+  }
+
+  .card-elevated {
+    box-shadow: var(--shadow-card);
+    transition:
+      box-shadow 0.22s ease,
+      transform 0.22s ease,
+      border-color 0.22s ease,
+      background-color 0.22s ease;
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-elevated:hover {
+      transform: none;
     }
   }
 }

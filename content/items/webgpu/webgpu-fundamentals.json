@@ -5,7 +5,13 @@
   "title": "WebGPU Fundamentals",
   "description": "从基础渲染、缓冲区与纹理到计算着色器的系列教程，适合作为学习主线",
   "audience": "具备 JavaScript 基础，希望系统学习 WebGPU 的开发者",
-  "url": "https://webgpufundamentals.org/",
-  "tags": ["资源", "教程", "入门", "免费", "开发"],
+  "url": "https://webgpufundamentals.org/webgpu/lessons/zh_cn/",
+  "tags": [
+    "资源",
+    "教程",
+    "入门",
+    "开发",
+    "中译"
+  ],
   "featured": true
 }

@@ -1,0 +1,11 @@
+{
+  "id": "trends24",
+  "topic": "tools",
+  "kind": "site",
+  "title": "Trends24",
+  "description": "查看全球各城市和国家 X（Twitter）过去 24 小时的热门话题与趋势",
+  "url": "https://trends24.in/",
+  "tags": [
+    "工具"
+  ]
+}

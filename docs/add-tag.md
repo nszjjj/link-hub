@@ -3,19 +3,19 @@
 在项目根目录运行：
 
 ```sh
-npm run add-tag -- Solana
+npm run add-tag -- 电子书
 ```
 
 一次添加多个标签，包含空格的标签用引号包起来：
 
 ```sh
-npm run add-tag -- pa "price action" 教程
+npm run add-tag -- "流式渲染" 电子书
 ```
 
 命令会更新 `src/lib/tagVocabulary.ts` 中的 `ALLOWED_TAGS`，不修改已有条目。然后在条目 JSON 中使用：
 
 ```json
-"tags": ["资源", "教程", "price action"]
+"tags": ["资源", "教程", "电子书"]
 ```
 
 上面是条目的一个字段，加入现有对象即可。运行 `npm run validate` 检查内容；发布前正常执行 `npm run build`。
@@ -26,6 +26,7 @@ npm run add-tag -- pa "price action" 教程
 - 标签不能空白、不能包含英文逗号、长度最多 24 个字符，与条目 Schema 一致。一批参数中任何一个无效，整批不修改文件。
 - 新标签追加到普通词表，不自动提升为顶部入口。语义分组与入口排序由同文件的 `TAG_DEFINITIONS` 管理；PDF 等属性留在分组面板。
 - 需要常用分类时配置 `group: 'content'` 和唯一的 `primary` 顺序；普通关键词不需要额外配置。书目格式和访问条件优先填写 format/access，由前端派生。
+- 收录资源默认可免费访问，不再使用 `免费` 标签；中文原生内容不标 `中文`，原文不是中文的中译资源标 `中译`。
 - 提交词表修改后，再构建和部署。没有新增依赖，也不需要全局安装命令。
 
 查看用法：

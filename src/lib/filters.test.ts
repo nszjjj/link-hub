@@ -12,7 +12,7 @@ describe('检索与分组', () => {
   it('默认任一匹配，并支持全部匹配', () => {
     expect(ids({ selectedTags: ['工具', 'PDF'] })).toEqual(['charts', 'books'])
     expect(ids({ selectedTags: ['工具', 'PDF'], tagMatch: 'all' })).toEqual([])
-    expect(ids({ selectedTags: ['资源', '免费'], tagMatch: 'all' })).toEqual(['books'])
+    expect(ids({ selectedTags: ['资源', 'PDF'], tagMatch: 'all' })).toEqual(['books'])
   })
   it('空标签不限制结果，未知标签不静默放宽筛选', () => {
     expect(ids()).toEqual(['charts', 'books', 'contracts'])
@@ -20,7 +20,7 @@ describe('检索与分组', () => {
   })
   it.each([
     ['  ｓＯＬＩＤＩＴＹ  ', ['contracts']], ['Ada', ['books']],
-    ['推荐先读', ['books']], ['EVM', ['contracts']], ['中文', ['charts']],
+    ['推荐先读', ['books']], ['EVM', ['contracts']], ['图表', ['charts']],
   ])('搜索嵌套信息并标准化输入 %s', (keyword, expected) => {
     expect(ids({ keyword })).toEqual(expected)
   })
@@ -47,10 +47,10 @@ describe('检索与分组', () => {
   })
   it('决策标签优先，其余按频次与首次出现排序，每条目每标签只计一次', () => {
     const items = [
-      { ...data().items[0], tags: ['alpha', 'beta', 'beta', 'PDF', '免费'] },
+      { ...data().items[0], tags: ['alpha', 'beta', 'beta', 'PDF', '入门'] },
       { ...data().items[1], tags: ['alpha', 'gamma'] },
     ]
-    expect(collectTags(items)).toEqual(['免费', 'PDF', 'alpha', 'beta', 'gamma'])
+    expect(collectTags(items)).toEqual(['入门', 'PDF', 'alpha', 'beta', 'gamma'])
     expect(collectTags([])).toEqual([])
   })
 })

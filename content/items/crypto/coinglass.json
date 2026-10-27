@@ -1,0 +1,14 @@
+{
+  "id": "coinglass",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "CoinGlass 加密衍生品数据",
+  "description": "查看资金费率、多空比、持仓量与清算热力图等加密衍生品数据",
+  "url": "https://www.coinglass.com/zh",
+  "tags": [
+    "工具",
+    "区块链",
+    "行情",
+    "可视化"
+  ]
+}

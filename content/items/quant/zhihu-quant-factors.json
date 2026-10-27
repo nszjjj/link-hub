@@ -1,0 +1,13 @@
+{
+  "id": "zhihu-quant-factors",
+  "topic": "quant",
+  "kind": "site",
+  "title": "知乎：量化因子文章汇总",
+  "description": "汇总量化因子的构造、检验与应用文章，适合查找因子研究思路",
+  "audience": "适合已有一定量化基础、关注因子研究的读者",
+  "url": "https://zhuanlan.zhihu.com/p/2068101319571813329",
+  "tags": [
+    "资源",
+    "进阶"
+  ]
+}

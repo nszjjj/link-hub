@@ -1,7 +1,10 @@
 import type { TopicContentGroup } from '../lib/topics'
 import type { ReactNode } from 'react'
+import { Focus } from 'lucide-react'
+import { hasTopicHub } from '../lib/routes'
 import { cn } from '../lib/utils'
 import { TopicCount } from './TopicCount'
+import { TopicHubEntry } from './TopicHubEntry'
 import { TopicItemGrid } from './TopicItemGrid'
 import { Button } from './ui/button'
 
@@ -28,13 +31,16 @@ export function SubtopicSection({
   filterPanel,
   onScopeChange,
 }: SubtopicSectionProps) {
+  const hub = hasTopicHub(group.topic.id)
+  // 有 Hub 时默认只展示入口；搜索/标签筛选时仍列出命中卡片，避免发现性丢失
+  const showHubEntryOnly = hub && !isFiltered
+
   return (
     <section
       id={`topic-${group.topic.id}`}
       aria-labelledby={`heading-${group.topic.id}`}
       className="scroll-mt-[calc(var(--sticky-offset,88px)+24px)] border-t border-border pt-6 md:pt-8"
     >
-      {/* 子主题通过标题和细线表达归属，保持移动端卡片的完整宽度。 */}
       <p className="mb-2 text-sm text-muted-foreground md:hidden">
         {parentName} / {group.topic.name}
       </p>
@@ -63,19 +69,38 @@ export function SubtopicSection({
             totalCount={group.totalCount}
             isFiltered={isFiltered}
           />
-          {scopeId !== group.topic.id && (
-            <Button variant="ghost" aria-label={`只看 ${group.topic.name}`} onClick={() => onScopeChange(group.topic.id)}
-              className="min-h-12 rounded-md px-2 text-sm font-normal text-muted-foreground">只看此主题</Button>
+          {scopeId !== group.topic.id && !showHubEntryOnly && (
+            <Button
+              variant="outline"
+              aria-label={`只看 ${group.topic.name}`}
+              onClick={() => onScopeChange(group.topic.id)}
+              className="min-h-12 gap-1.5 rounded-md bg-card px-3 text-sm font-normal"
+            >
+              <Focus aria-hidden="true" className="hidden sm:block" />
+              只看此主题
+            </Button>
           )}
         </div>
       </div>
       {scopeId === group.topic.id && filterPanel}
-      <TopicItemGrid
-        items={group.items}
-        headingLevel={4}
-        expandedIds={expandedIds}
-        onExpandedChange={onExpandedChange}
-      />
+      {showHubEntryOnly ? (
+        <div className="grid gap-4 md:grid-cols-2 min-[75rem]:grid-cols-3">
+          <TopicHubEntry
+            topicId={group.topic.id}
+            topicName={group.topic.name}
+            description={group.topic.description}
+            itemCount={group.totalCount}
+            parentName={parentName}
+          />
+        </div>
+      ) : (
+        <TopicItemGrid
+          items={group.items}
+          headingLevel={4}
+          expandedIds={expandedIds}
+          onExpandedChange={onExpandedChange}
+        />
+      )}
     </section>
   )
 }

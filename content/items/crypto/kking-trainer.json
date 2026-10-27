@@ -1,0 +1,11 @@
+{
+  "id": "kking-trainer",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "K 线训练器 · 合约模拟",
+  "description": "随机抽取币安永续合约历史行情，屏蔽币种与日期后逐根播放 K 线练习交易",
+  "url": "https://kking2020.com/trainer/",
+  "tags": [
+    "工具"
+  ]
+}

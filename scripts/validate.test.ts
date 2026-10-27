@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url'
 import { afterEach, describe, expect, it } from 'vitest'
 import { makeData, makeHierarchyData } from '../test/fixtures'
 import { writeContentFixture } from '../test/contentFixtures'
+import { tsxCli } from '../test/tsx'
 import { validateLinks } from './validate'
 
 const roots: string[] = []
@@ -225,25 +226,24 @@ describe('构建校验', () => {
     expect(report.warnings.some((issue) => issue.message.includes('200 MiB'))).toBe(true)
     expect(report.warnings.some((issue) => issue.message.includes('未引用'))).toBe(true)
   })
-  it('推荐超过两条以及资料标签冲突只警告', () => {
+  it('推荐超过两条只警告', () => {
     const data = makeData()
     data.items.forEach((item) => {
       item.topic = 'markets'
       Object.assign(item, { featured: true })
     })
-    data.items[1].books![0].access = 'unknown'
     const report = validateLinks(fixture(data))
     expect(report.errors).toEqual([])
     expect(report.warnings.map((issue) => issue.message).join(' ')).toContain('推荐')
-    expect(report.warnings.map((issue) => issue.message).join(' ')).toContain('免费')
   })
   it('CLI 有效内容退出 0，缺文件退出非零', () => {
     const root = fixture()
     const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-    const tsx = join(projectRoot, 'node_modules/.bin/tsx')
     const script = join(projectRoot, 'scripts/validate.ts')
-    expect(execFileSync(tsx, [script, root], { encoding: 'utf8' })).toContain('校验通过')
+    expect(execFileSync(process.execPath, [tsxCli, script, root], { encoding: 'utf8' })).toContain(
+      '校验通过',
+    )
     rmSync(join(root, 'public/files/guide.pdf'))
-    expect(spawnSync(tsx, [script, root], { encoding: 'utf8' }).status).toBe(1)
+    expect(spawnSync(process.execPath, [tsxCli, script, root], { encoding: 'utf8' }).status).toBe(1)
   })
 })

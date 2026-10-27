@@ -5,10 +5,19 @@
   "title": "Web 页面基础路线",
   "description": "通过结构、样式与脚本三个阶段建立独立制作网页的能力",
   "audience": "适合零基础",
+  "estimatedEffort": "约 20–40 小时，按个人进度调整",
+  "tags": [
+    "资源",
+    "路线图",
+    "入门",
+    "前端"
+  ],
   "steps": [
     {
       "title": "HTML 与页面结构",
       "description": "理解语义标签和文档结构",
+      "outcome": "能写出结构清晰的静态页面骨架",
+      "effort": "约 6–10 小时",
       "resources": [
         {
           "title": "MDN HTML 指南",
@@ -20,6 +29,8 @@
     {
       "title": "CSS 与布局基础",
       "description": "学习样式规则、盒模型和响应式布局",
+      "outcome": "能完成常见布局并做基础响应式",
+      "effort": "约 8–14 小时",
       "resources": [
         {
           "title": "MDN CSS 指南",
@@ -31,6 +42,8 @@
     {
       "title": "JavaScript 与交互",
       "description": "理解事件、数据与浏览器 API",
+      "outcome": "能为页面加上基础交互与简单数据操作",
+      "effort": "约 8–16 小时",
       "resources": [
         {
           "title": "MDN JavaScript 指南",
@@ -39,13 +52,5 @@
         }
       ]
     }
-  ],
-  "tags": [
-    "资源",
-    "路线图",
-    "入门",
-    "免费",
-    "中文",
-    "前端"
   ]
 }

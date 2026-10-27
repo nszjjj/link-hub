@@ -1,0 +1,16 @@
+{
+  "id": "tour-of-rust",
+  "topic": "rust",
+  "kind": "site",
+  "title": "Rust 语言之旅",
+  "description": "以交互式示例逐步介绍 Rust 的语法、所有权、结构与错误处理，适合边读边改",
+  "audience": "适合初学者通过动手示例理解 Rust",
+  "url": "https://tourofrust.com/00_zh-cn.html",
+  "tags": [
+    "资源",
+    "教程",
+    "入门",
+    "开发",
+    "中译"
+  ]
+}

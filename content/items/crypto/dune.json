@@ -1,0 +1,14 @@
+{
+  "id": "dune",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "Dune",
+  "description": "用 SQL 查询多链链上数据并浏览公开仪表盘，注册后可保存查询",
+  "url": "https://dune.com/home",
+  "tags": [
+    "工具",
+    "区块链",
+    "可视化",
+    "需注册"
+  ]
+}

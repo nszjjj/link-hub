@@ -1,0 +1,11 @@
+{
+  "id": "hdrify",
+  "topic": "tools",
+  "kind": "site",
+  "title": "HDRify",
+  "description": "在浏览器中为图片添加 HDR 光晕与高亮层次，可调节效果后导出",
+  "url": "https://hdrify.com/",
+  "tags": [
+    "工具"
+  ]
+}

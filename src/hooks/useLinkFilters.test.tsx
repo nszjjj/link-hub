@@ -57,11 +57,11 @@ describe('useLinkFilters', () => {
     window.history.replaceState(
       { key: 'share' },
       '',
-      '/link-hub/?q=Ada&tags=免费,PDF&match=all#markets',
+      '/link-hub/?q=Ada&tags=资源,PDF&match=all#markets',
     )
     const { result } = renderHook(() => useLinkFilters(data()))
     expect(result.current.keyword).toBe('Ada')
-    expect(result.current.selectedTags).toEqual(['免费', 'PDF'])
+    expect(result.current.selectedTags).toEqual(['资源', 'PDF'])
     expect(result.current.tagMatch).toBe('all')
     expect(resultIds(result.current)).toEqual(['books'])
     expect(result.current.groups.map((group) => group.topic.id)).toEqual(['markets'])
@@ -90,16 +90,16 @@ describe('useLinkFilters', () => {
     const { result } = renderHook(() => useLinkFilters(data()))
     act(() => {
       result.current.setKeyword('Ada')
-      result.current.toggleTag('免费')
+      result.current.toggleTag('资源')
       result.current.toggleTag('PDF')
       result.current.setTagMatch('all')
     })
-    expect(result.current.selectedTags).toEqual(['免费', 'PDF'])
+    expect(result.current.selectedTags).toEqual(['资源', 'PDF'])
     expect(params().get('q')).toBe('Ada')
-    expect(params().get('tags')).toBe('免费,PDF')
+    expect(params().get('tags')).toBe('资源,PDF')
     expect(params().get('match')).toBe('all')
     act(() => vi.advanceTimersByTime(1_000))
-    expect(params().get('tags')).toBe('免费,PDF')
+    expect(params().get('tags')).toBe('资源,PDF')
     expect(resultIds(result.current)).toEqual(['books'])
   })
 
@@ -131,7 +131,7 @@ describe('useLinkFilters', () => {
     window.history.replaceState(
       null,
       '',
-      '/link-hub/?q=Ada&tags=免费,PDF&match=all&from=share#markets',
+      '/link-hub/?q=Ada&tags=资源,PDF&match=all&from=share#markets',
     )
     const { result } = renderHook(() => useLinkFilters(data()))
     act(() => result.current.clearTags())
@@ -263,12 +263,12 @@ describe('useLinkFilters', () => {
     act(() => {
       result.current.setTopic('web3')
       result.current.toggleTag('路线图')
-      result.current.toggleTag('免费')
+      result.current.toggleTag('进阶')
     })
     expect(resultIds(result.current)).toEqual(['contracts'])
     expect(result.current.primaryTags).toContain('路线图')
     act(() => result.current.clearContentTags())
-    expect(result.current.selectedTags).toEqual(['免费'])
+    expect(result.current.selectedTags).toEqual(['进阶'])
     act(() => result.current.clearFilters())
     expect(result.current.topicId).toBe('web3')
     expect(resultIds(result.current)).toHaveLength(4)

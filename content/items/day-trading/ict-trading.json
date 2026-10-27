@@ -1,0 +1,15 @@
+{
+  "id": "ict-trading",
+  "topic": "day-trading",
+  "kind": "site",
+  "title": "ICT Trading 官方教程",
+  "description": "免费讲解 ICT 机构订单流与裸图交易的英文课程，涵盖市场结构、流动性与交易模型",
+  "audience": "适合已有一定图表基础、希望理解机构交易模型的交易者",
+  "url": "https://www.theinnercircletraders.com/",
+  "tags": [
+    "资源",
+    "教程",
+    "PDF",
+    "Liquidity"
+  ]
+}

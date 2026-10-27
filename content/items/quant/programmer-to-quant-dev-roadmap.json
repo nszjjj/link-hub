@@ -1,0 +1,59 @@
+{
+  "id": "programmer-to-quant-dev-roadmap",
+  "topic": "quant",
+  "kind": "roadmap",
+  "title": "程序员转 Quant Dev 落地路线",
+  "description": "基于论坛真实经验与工程迁移路径，拆成可检查阶段的高效方案：差距诊断 → 工程+领域并行 → 端到端项目 → 面试投递。优先 Crypto / 中低频系统方向。",
+  "audience": "有编程基础、希望转 Quant Dev（系统/回测/执行/数据管道）的开发者，尤其适合本科与互联网/游戏/Web3 背景",
+  "estimatedEffort": "兼职每周 15–20 小时约 6–8 个月；全职约 4–5 个月",
+  "tags": [
+    "资源",
+    "路线图",
+    "进阶",
+    "入门"
+  ],
+  "steps": [
+    {
+      "title": "阶段 0：定位与差距诊断（1 周）",
+      "description": "明确目标岗位画像与自身工程水位，避免盲目学习。收集 Crypto 做市/交易所、中小型私募 Quant Dev、交易系统开发等 15–20 份真实 JD，列出已会与缺口。",
+      "resources": []
+    },
+    {
+      "title": "阶段 1：工程加固 + 领域入门（4–6 周）",
+      "description": "并行两条线。工程：Python 数据/异步与（按需）现代 C++ 并发/系统编程；领域：市场微观结构、基础产品与风险、回测常见坑。理解订单簿、滑点、手续费、前视偏差与过拟合，能讲清回测收益为何常被高估。",
+      "resources": [
+        {
+          "title": "Awesome-QuantDev-Learn",
+          "url": "https://github.com/0voice/Awesome-QuantDev-Learn",
+          "note": "优先 Python 量化开发、核心技术栈、C++ 方向章节",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "阶段 2.1：数据管道 + 基础回测框架（约 3 周）",
+      "description": "项目启动。实现多源行情采集与清洗、时间序列存储、可扩展的回测骨架（事件驱动或向量化）。Crypto 数据免费且实时，可优先用 ccxt 或主流交易所 API/WebSocket 跑通端到端。",
+      "resources": []
+    },
+    {
+      "title": "阶段 2.2：策略 + 风控集成（约 4 周）",
+      "description": "实现 1–2 个非教程级策略逻辑（资金费率、简单多因子、订单簿 imbalance 或价格行为/ICT 信号），加入止损、仓位、回撤控制与成本建模。",
+      "resources": []
+    },
+    {
+      "title": "阶段 2.3：报告、模拟盘与文档（约 3–5 周）",
+      "description": "绩效报告与可视化、纸交易接口、完整 README（设计决策与局限）。目标：可公开演示的完整系统 + 2–4 周模拟记录。",
+      "resources": []
+    },
+    {
+      "title": "阶段 3：面试专项与投递（4–6 周，可与项目后期重叠）",
+      "description": "算法（中等难度 + 并发相关）、系统设计（行情/OMS/风控/回测框架）、领域题与项目深挖。优先投 Crypto 与中小型团队 Quant Dev 岗。用 LeetCode 与系统设计练习覆盖重点数据结构、并发与交易系统设计题。",
+      "resources": []
+    },
+    {
+      "title": "阶段 4：入职后快速成长（入职后 3–6 个月）",
+      "description": "主动承担策略落地相关模块，补真实市场与运维细节，视兴趣再向研究或交易侧扩展。",
+      "resources": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "solidity-docs",
+  "topic": "ethereum",
+  "kind": "site",
+  "title": "Solidity 中文文档",
+  "description": "社区维护的简体中文译本，系统讲解 Solidity 语法、类型、合约与编译器，编写合约时也适合查阅",
+  "audience": "适合系统学习 Solidity 或开发合约时查阅",
+  "url": "https://docs.soliditylang.org/zh-cn/stable/",
+  "tags": [
+    "资源",
+    "文档",
+    "开发",
+    "中译"
+  ]
+}

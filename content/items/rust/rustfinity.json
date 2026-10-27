@@ -1,0 +1,14 @@
+{
+  "id": "rustfinity",
+  "topic": "rust",
+  "kind": "site",
+  "title": "Rustfinity",
+  "description": "通过每日编程挑战在线练习 Rust，代码由真实工具链编译并给出测试反馈",
+  "audience": "适合希望用练习巩固 Rust 基础与标准库的开发者",
+  "url": "https://www.rustfinity.com/",
+  "tags": [
+    "教程",
+    "入门",
+    "开发"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "livabble",
+  "topic": "life",
+  "kind": "site",
+  "title": "Livabble 宜居城市",
+  "description": "按生活成本对比全球城市，并结合城市点评、税率与人均 GDP 辅助选择居住地",
+  "url": "https://livabble.com/zh",
+  "tags": [
+    "工具"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "solana-playground",
+  "topic": "solana",
+  "kind": "site",
+  "title": "Solana Playground",
+  "description": "在浏览器中编写、编译和运行 Solana 程序，无需本地配置工具链，适合快速试验与调试",
+  "audience": "适合想跳过环境配置、快速验证想法的开发者",
+  "url": "https://beta.solpg.io/",
+  "tags": [
+    "工具",
+    "入门",
+    "开发"
+  ]
+}

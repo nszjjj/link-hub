@@ -1,0 +1,113 @@
+{
+  "id": "webgpu-roadmap",
+  "topic": "webgpu",
+  "kind": "roadmap",
+  "title": "WebGPU 结构化学习路线（有图形基础）",
+  "description": "面向已有 OpenGL / WebGL 或 Games202 一类图形学基础的开发者。社区共识把 webgpufundamentals 当主线，强调管线与 BindGroup 心智模型转换，尽早切入 Compute 与可落地小项目，避免卡在 hello triangle。",
+  "audience": "具备 OpenGL/WebGL 或现代图形学基础，目标是能独立完成渲染与计算实践的开发者",
+  "estimatedEffort": "约 40–80 小时（可压缩到 4–8 周，按每日投入调整）",
+  "tags": [
+    "资源",
+    "路线图",
+    "进阶",
+    "开发",
+    "图形"
+  ],
+  "steps": [
+    {
+      "title": "心智模型对齐（Phase 0）",
+      "description": "先读 WebGPU from WebGL + Explainer 前几节，理解 Adapter→Device→Queue→Pipeline→BindGroup 的显式模型，跑通官方 Codelab（Game of Life）。",
+      "outcome": "能自己写出请求 Device + 画彩色三角形的完整代码，并解释为何没有全局状态",
+      "effort": "2–4 小时",
+      "resources": [
+        {
+          "title": "WebGPU from WebGL",
+          "url": "https://webgpufundamentals.org/webgpu/lessons/webgpu-from-webgl.html",
+          "access": "free"
+        },
+        {
+          "title": "WebGPU Explainer",
+          "url": "https://gpuweb.github.io/gpuweb/explainer/",
+          "access": "free"
+        },
+        {
+          "title": "Google Codelab: Your first WebGPU app",
+          "url": "https://codelabs.developers.google.com/your-first-webgpu-app",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "核心 API 与基础渲染（Phase 1）",
+      "description": "以 WebGPU Fundamentals 为主线，覆盖 Canvas 配置、Render Pipeline、WGSL、Buffer/Uniform/BindGroup、Texture、简单 3D（MVP）。",
+      "outcome": "自己实现带颜色的旋转立方体或熟悉的简单 3D 场景，能解释 BindGroup Layout 与 Pipeline 不可变性",
+      "effort": "12–20 小时",
+      "resources": [
+        {
+          "title": "WebGPU Fundamentals（主教材）",
+          "url": "https://webgpufundamentals.org/",
+          "access": "free"
+        },
+        {
+          "title": "Tour of WGSL",
+          "url": "https://google.github.io/tour-of-wgsl/",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "3D 与现代管线迁移（Phase 2）",
+      "description": "结合已有 Games202 知识，快速覆盖 Depth、多 Pass、Instancing、基础光照 / PBR 入门、Camera。参考官方 Samples 与 glTF 加载实践。",
+      "outcome": "能加载并渲染 glTF 模型，并完成至少一个后处理或简单阴影",
+      "effort": "12–20 小时",
+      "resources": [
+        {
+          "title": "WebGPU Samples",
+          "url": "https://webgpu.github.io/webgpu-samples/",
+          "access": "free"
+        },
+        {
+          "title": "From 0 to glTF with WebGPU（系列）",
+          "url": "https://www.willusher.io/graphics/2023/04/10/0-to-gltf-triangle/",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "Compute 与差异化能力（Phase 3）",
+      "description": "Compute Shader、Workgroup、Storage Buffer、Ping-Pong、粒子系统（官方 Boids）。在 compute.toys 练手。这是 WebGPU 相对传统 OpenGL 路径的最大价值点。",
+      "outcome": "写一个纯 Compute 粒子或简单物理模拟并渲染出来，能对比 Compute vs Fragment 的适用场景",
+      "effort": "10–16 小时",
+      "resources": [
+        {
+          "title": "compute.toys",
+          "url": "https://compute.toys",
+          "access": "free"
+        },
+        {
+          "title": "WebGPU Samples · Compute Boids",
+          "url": "https://webgpu.github.io/webgpu-samples/sample/computeBoids",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "工程化与落地项目（Phase 4）",
+      "description": "错误处理、Device Lost、Feature/Limits、性能观察。选一个可展示的小项目收尾（PBR 场景查看器 / GPU 粒子 + 后处理 / 简单 Compute Rasterizer / Games202 作业 WebGPU 重写）。",
+      "outcome": "有一个可运行、可讲清楚的小项目，并清楚知道后续如何接到 Unity / 自研引擎或 portfolio",
+      "effort": "8–20 小时（视项目规模）",
+      "resources": [
+        {
+          "title": "MDN WebGPU API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API",
+          "access": "free"
+        },
+        {
+          "title": "awesome-webgpu",
+          "url": "https://github.com/mikbry/awesome-webgpu",
+          "access": "free"
+        }
+      ]
+    }
+  ]
+}

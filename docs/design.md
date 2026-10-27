@@ -148,7 +148,7 @@ public/data/links.json ──→ Vite 静态产物 ──→ GitHub Pages
 | reading-list | 实际书目数、第一本书标题 | 第二本标题、适用人群、含 PDF、访问条件摘要 |
 | roadmap | 实际阶段数、前两个阶段标题，剩余显示 `+N` | 适用人群、预计投入 |
 
-书单访问摘要按所有书目计算：全部 `free` 才显示“全部免费”；只有部分 `free` 显示“含免费资源”；全部 `paid` 显示“付费资源”；部分已知付费显示“含付费资源”；未知部分明确显示“部分访问条件未确认”。全为 `unknown` 时不渲染访问条件摘要，不将本地文件默认视作免费。含 PDF 根据格式判断。书单使用 `免费` 标签须全部书目为 `free`，路线图使用该标签须至少有一份资源且全部引用资源为 `free`；没有结构化访问信息的 site 由维护者核实，不以免费样章或试用期代表免费使用。
+书单访问摘要按所有书目计算：全部 `free` 才显示“全部免费”；只有部分 `free` 显示“含免费资源”；全部 `paid` 显示“付费资源”；部分已知付费显示“含付费资源”；未知部分明确显示“部分访问条件未确认”。全为 `unknown` 时不渲染访问条件摘要，不将本地文件默认视作免费。含 PDF 根据格式判断。访问条件由资源的 `access` 字段决定，不通过条目标签重复声明；没有结构化访问信息的 site 由维护者核实，不以免费样章或试用期代表免费使用。
 
 ### 3.5 JSON 示例
 
@@ -218,11 +218,11 @@ public/data/links.json ──→ Vite 静态产物 ──→ GitHub Pages
 - 分类为文档、教程、书籍、工具、路线图；属性分为格式、访问条件、语言、难度、账号要求；其他标签默认进入关键词组。只有配置了 `primary` 的分类进入顶部入口，未被内容使用的入口隐藏。
 - `资源` 是泛称，保留为可搜索关键词，不与教程等用途分类并列。“PDF”是格式，可用于书籍、论文、教程，不建立“书籍 → PDF”的标签父子树。
 - `kind` 只决定卡片形态，不能把全部网站认定为工具、全部阅读清单认定为书籍。书籍、文档和教程由条目显式声明；路线图可由确定的 roadmap 形态派生。
-- 新分组筛选通过 `tags.ts` 计算有效标签。书目和阶段资源的 PDF/EPUB 从 format 或本地扩展名派生，免费/付费从 access 派生；unknown 不推断。结构化内容的格式和访问条件以资源字段为准，条目不必重复填写这些属性。
-- 卡片的“全部免费”等摘要仍按所有资源计算；筛选“免费”表示包含免费资源。两者用不同文案表达，不能把部分免费显示为全部免费。旧条目显式免费/PDF 标签的不一致警告继续保留。
+- 新分组筛选通过 `tags.ts` 计算有效标签。书目和阶段资源的 PDF/EPUB 从 format 或本地扩展名派生，付费从 access 派生；资源默认免费，不再生成免费标签；unknown 不推断。结构化内容的格式和访问条件以资源字段为准，条目不必重复填写这些属性。
+- 卡片的“全部免费”等摘要仍按所有资源计算，不能把部分免费显示为全部免费。`PDF` 标签与实际格式不一致时继续警告；条目不再手工声明免费标签。
 - 每条目每标签计一次，常用入口按配置排序；更多面板先按语义分组，组内保留既有决策标签优先与频次排序。标签取自筛选前的当前范围，关键词和属性变化不导致入口消失或重排。
-- 标签中文为主，规范缩写保留 PDF、API；长度和逗号禁用由 Schema 校验。未知标签与别名只警告，前端不静默归一化语义别名。注册普通标签不自动提升为顶部入口。
-- 每个直接主题建议最多两个推荐条目；各形态块内推荐优先，书目和阶段保持学习顺序。卡片保留 PDF、免费、入门等决策信息。
+- 标签以中文为主，保留 `PDF`、`API` 等规范缩写，也允许 `Liquidity`、`price action`、`GitHub 仓库` 这类有明确检索价值的外文标签；长度和逗号禁用由 Schema 校验。`中译` 表示原文非中文的中文译本，中文原生内容不加语言标签。未知标签与别名只警告，前端不静默归一化语义别名。注册普通标签不自动提升为顶部入口。
+- 每个直接主题建议最多两个推荐条目；各形态块内推荐优先，书目和阶段保持学习顺序。卡片保留 PDF、中译、入门等决策信息。
 
 ### 3.7 文件与内容维护边界
 
@@ -238,7 +238,7 @@ public/data/links.json ──→ Vite 静态产物 ──→ GitHub Pages
 站点名                         当前主题（宽屏，滚动时显示）
 [搜索资源、书名或阶段…                             清除]
 内容分类： [全部] [文档] [教程] [书籍] [工具] [路线图] [更多]
-已选： [免费 ×] [PDF ×]    同组任一项，不同组同时满足
+已选： [中译 ×] [PDF ×]    同组任一项，不同组同时满足
 找到 8 个条目 · 3 个主题                            清空筛选
 ────────────────────────────────────────────────────────
 ▍美股                                           2 / 6 条目
@@ -328,17 +328,17 @@ Ethereum                                   2 / 4 条目
 
 唯一状态为 `keyword`、`selectedTags`、`tagMatch: 'grouped' | 'any' | 'all'` 与可选 `topicId`。没有独立 quick 状态，也没有每个主题各存一套条件。
 
-- 新访问默认 grouped：同组 OR，跨组 AND。例如“文档或书籍，并且 PDF 或 EPUB，并且免费”。关键词、主题范围与标签条件之间为 AND。
+- 新访问默认 grouped：同组 OR，跨组 AND。例如“文档或书籍，并且 PDF 或 EPUB，并且中译”。关键词、主题范围与标签条件之间为 AND。
 - “全部”只清除内容分类，保留格式等属性、关键词和主题范围。“清空筛选”清除关键词及全部标签，恢复 grouped，保留主题范围；“查看全部主题”只清除 topicId。
 - 已选区明确说明“同组匹配任一项，不同组同时满足”。旧链接 any/all 保留原始标签 OR/AND 匹配，并显示原语义；用户可明确切换为分组匹配，不自动迁移分享条件。
-- 资源格式与访问条件组合必须由同一书目或同一阶段资源满足。“免费 PDF”不能由免费网页和另一份付费 PDF 共同满足。
+- 资源格式与访问条件组合必须由同一书目或同一阶段资源满足。“付费 PDF”不能由付费网页和另一份免费 PDF 共同满足。
 - 空标签集合不限制结果。标签不因被移出顶部而失去搜索或筛选能力；未知选择保留并可移除。
 
 | 已选条件 | 新分组语义 | 是否命中 |
 |---|---|---|
 | 书籍、PDF | 书籍且包含 PDF | PDF 书籍命中，PDF 文档不命中 |
 | 文档、书籍、PDF、EPUB | 文档或书籍，且 PDF 或 EPUB | 满足分类与任一格式即命中 |
-| 书籍、PDF、免费 | 书籍且至少一份免费 PDF | 免费网页加付费 PDF 不命中 |
+| 书籍、PDF、付费 | 书籍且至少一份付费 PDF | 付费网页加免费 PDF 不命中 |
 | 无 | 只限制范围及关键词 | 两者均满足即命中 |
 
 搜索对 Unicode 兼容字符、大小写、首尾空格归一化，使用子串匹配。检索标题、描述、适用人群、有效标签、书目/阶段/资源的标题、作者、备注及阶段描述，不搜索 URL。命中后返回整张条目，不拆分书单或路线；展开仍展示完整资料。
@@ -404,6 +404,7 @@ scripts/
   generate-data.ts             # 完整校验后原子生成 links.json
   contentPlugin.ts             # 开发生成、监听与错误恢复
   validate.ts                  # 结构、文件引用、体积与内容警告
+  add-tag.ts                   # 注册规范标签并更新词表
   generate-schema.ts           # 可选：从 Zod 生成编辑器 JSON Schema
 src/
   components/
@@ -430,16 +431,20 @@ src/
     schema.ts                  # Zod Schema 与推导类型
     paths.ts                   # 静态路径规则与 BASE_URL 解析
     loadLinks.ts               # fetch、HTTP 检查、运行时校验
+    filterParams.ts            # 筛选 URL 参数的解析与序列化
     filters.ts                 # 检索、标签聚合、直接主题分桶与稳定排序
     topics.ts                  # 两级分组、直接/汇总计数与可见位置路径
     resourcePresentation.ts    # 书单与路线图决策摘要、资源动作
     tagVocabulary.ts           # 规范词表、语义分组、常用入口与别名
     tags.ts                    # 有效属性、入口和分组匹配纯函数
+    utils.ts                   # shadcn/ui 类名合并
   App.tsx                      # 页面加载三态、筛选结果、展开 id 集合
   main.tsx
 vite.config.ts
-.github/workflows/deploy.yml
+.github/workflows/pages.yml
 ```
+
+主题变量位于 `src/index.css`（中性灰、低饱和蓝灰强调色与本地 Geist 字体）；shadcn/ui 配置位于 `components.json`，新增基础组件使用 `npx shadcn@latest add <组件名>`。
 
 派生状态包括筛选结果、计数、分组、常用标签高亮与决策摘要，通过纯函数计算。`App` 保存展开 id 集合，筛选不会丢失展开状态。不要同时保存 `quick` 与标签选择，也不要把可由数据计算的书目数、阶段数写入 JSON。
 
@@ -673,6 +678,25 @@ const topicLocations = getTopicLocations(groups)
 
 `groupByTopic` 只负责直接归属分桶、同级 order 排序与形态块内推荐排序；稳定排序保留原始顺序。`buildTopicGroups` 组装两级关系，隐藏空分支。`topicCounts.direct/total` 始终按全量数据计算，分别供直接与父级汇总计数使用。root.items 只包含直接内容，subtopics 只保留匹配子级，hasSubtopics 不因过滤改变。
 
+#### 筛选 Hook 接口
+
+页面无条件调用两个 hook，再根据加载状态渲染；数据未就绪时仍可恢复 URL 中的筛选条件。
+
+```ts
+const links = useLinks()
+const filters = useLinkFilters(links.status === 'ready' ? links.data : undefined)
+```
+
+`filters` 提供 `keyword / selectedTags / tagMatch / topicId`，以及 `setKeyword`、`toggleTag`、`removeTag`、`clearContentTags`、`clearTags`、`setTagMatch`、`setTopic` 和 `clearFilters`。
+
+- `setTopic('web3')` 包含 Web3 与子主题；`setTopic(undefined)` 只退出范围，保留其他条件。滚动和主题锚点不改变范围。
+- “全部”使用 `clearContentTags()`，保留属性；“清空筛选”恢复关键词、标签和 grouped 模式，保留范围。
+- `filteredItems / groups` 是筛选结果；`allTags / topicTotals` 来自全量内容，`availableTags / primaryTags / tagGroups` 来自筛选前的当前范围。
+- `scopeTopic / scopeLabel / scopeOptions / unknownTopic` 供范围展示与切换；未知范围不放宽结果，加载完成后提示失效。
+- `matchedCount / totalCount / visibleTopicCount / visibleSubtopicCount` 统一按条目计数；父级分母包含子级，不重复展示内容。
+
+URL 状态以 `topic / q / tags / match` 持久化，解析与序列化集中在 `filterParams.ts`；具体匹配语义与同步时机见 4.4、4.5。
+
 当前规模无需索引，性能需要时在数据变化后预计算搜索文本、有效标签，避免每次输入重建。旧过滤模式与新分组模式必须分别测试，不用 UI 特例修正业务含义。
 
 ### 5.5 图标、性能与外链可靠性
@@ -701,13 +725,27 @@ JSON 一次加载，PDF 不预加载或嵌入预览。CI 默认不探测外链�
 
 校验结果报告主题数、条目数、引用文件数、警告数。警告与错误明确区分，不把未知标签升级成不透明的发布失败。
 
-### 6.2 开发与构建命令
+### 6.2 本地开发与构建命令
+
+推荐 Node.js 24（见 `.nvmrc`），兼容 `^22.12.0 || ^24.0.0 || >=26.0.0`。首次运行：
+
+```sh
+npm ci
+npm run validate
+npm test
+npm run dev
+```
+
+打开终端打印的 `http://localhost:5173/link-hub/`。`dev` 启动时自动生成数据并监听内容更新；`build` 通过 `prebuild` 自动校验和生成；`preview` 只预览上次构建，内容修改后需要重新 build。Vite `base` 为 `/link-hub/`，本站 JSON 与文件地址统一通过 `src/lib/paths.ts` 的 `assetUrl()` 生成，外链保持原地址。
 
 ```json
 {
   "scripts": {
     "dev": "vite",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "validate": "tsx scripts/validate.ts",
+    "add-tag": "tsx scripts/add-tag.ts",
     "generate:data": "tsx scripts/generate-data.ts",
     "prebuild": "npm run generate:data",
     "build": "tsc -b && vite build",
@@ -716,74 +754,35 @@ JSON 一次加载，PDF 不预加载或嵌入预览。CI 默认不探测外链�
 }
 ```
 
-`npm run build` 通过 npm 的 `prebuild` 生命周期完成校验与生成，再执行构建；CI 不再重复运行同一份校验。手工检查内容可单独执行 `npm run validate`，需要写入聚合数据时执行 `npm run generate:data`。开发自动生成并监听更新；preview 只预览上次构建，内容修改后需重新 build。项目初始化后为筛选、Schema 与 URL 编解码配置小型测试集，CI 在构建前运行对应测试；避免为静态文案或简单样式编写只重复实现的测试。
+`npm run build` 通过 npm 的 `prebuild` 生命周期完成校验与生成，再执行构建；CI 不再重复运行同一份校验。手工检查内容可单独执行 `npm run validate`，需要写入聚合数据时执行 `npm run generate:data`。发布构建使用 `npm run build`，随后用 `npm run preview` 检查 `/link-hub/` 下的页面与下载。项目为筛选、Schema 与 URL 编解码维护小型测试集；避免为静态文案或简单样式编写只重复实现的测试。
 
-### 6.3 Pages 路径与流水线
+### 6.3 Pages 路径与部署流水线
 
-本仓库使用项目页路径 `/link-hub/`；如果仓库改名、使用用户主页仓库或自定义域名，同步调整 `base` 并重新验证资源路径。
+本仓库使用项目页路径 `/link-hub/`；如果仓库改名、使用用户主页仓库或自定义域名，需要同步调整 `vite.config.ts` 的 `base` 并重新验证资源路径。
 
 ```ts
-import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from 'node:url'
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+import { contentPlugin } from './scripts/contentPlugin'
 
 export default defineConfig({
   base: '/link-hub/',
-  plugins: [react()],
+  plugins: [contentPlugin(), react(), tailwindcss()],
+  resolve: {
+    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
+  },
 })
 ```
 
-GitHub 仓库 Settings → Pages → Source 选择 **GitHub Actions**。部署示例以 `main` 为发布分支，初始化时确认实际默认分支并同步配置。PR 与 main 都执行构建校验，但仅 main 推送或从 main 手工触发时部署。
+首次部署前，在仓库 **Settings → Pages → Build and deployment → Source** 中选择 **GitHub Actions**。实际流水线见 [.github/workflows/pages.yml](../.github/workflows/pages.yml)：推送到 `main` 或 `content`、创建目标为 `main` 的 PR，以及手动 `workflow_dispatch` 都会运行；同一分支串行执行，避免中断正在发布的版本。
 
-```yaml
-name: Validate and deploy
-on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
-  workflow_dispatch:
+构建 job 从 `.nvmrc` 读取 Node.js 版本，通过 `package-lock.json` 安装依赖，依次执行 `npm test` 和 `npm run build`。`build` 通过 `prebuild` 校验内容并生成 JSON，失败时不会进入发布；仅 `main` 的非 PR 运行会上传 `dist/` 作为 Pages artifact。
 
-permissions:
-  contents: read
+部署 job 只在 `main` 的非 PR 运行中执行，依赖构建 job，具备 `pages: write` 与 `id-token: write`，使用 `github-pages` environment，调用 `configure-pages` 和 `deploy-pages`。推送到 `content` 或 PR 只做测试和构建，不发布。部署成功后访问 <https://nszjjj.github.io/link-hub/>；可在 **Actions → Validate and deploy Pages** 查看结果，或通过 **Run workflow** 选择 `main` 手动发布。
 
-concurrency:
-  group: pages-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-      - run: npm ci
-      # 初始化测试命令后，在此运行测试。
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        with:
-          path: dist
-
-  deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/configure-pages@v5
-      - id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-同分支流水线串行运行，避免打断正在发布的版本；GitHub concurrency 可能替换尚未开始的等待任务，最终以最新发布分支成功运行及其 commit 为准。部署前构建失败时不运行发布任务，保留当前线上版本。需要回滚时回退内容或代码提交并重新部署，不依赖浏览器缓存清除解决发布错误。
+提交源内容、静态文件和 lockfile 即可；`public/data/links.json` 和 `dist/` 由构建生成并忽略提交。构建失败时保留当前线上版本；需要回滚时回退内容或代码提交并重新部署，不依赖浏览器缓存清除解决发布错误。
 
 ## 7. 日常维护工作流
 

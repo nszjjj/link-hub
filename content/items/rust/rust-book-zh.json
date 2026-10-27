@@ -1,0 +1,15 @@
+{
+  "id": "rust-book-zh",
+  "topic": "rust",
+  "kind": "site",
+  "title": "Rust 程序设计语言（中文版）",
+  "description": "《The Rust Programming Language》的社区中文译本，从基础语法到所有权、并发与实战项目",
+  "audience": "适合从零开始系统学习 Rust 的读者",
+  "url": "https://kaisery.github.io/trpl-zh-cn/title-page.html",
+  "tags": [
+    "资源",
+    "书籍",
+    "入门",
+    "中译"
+  ]
+}
