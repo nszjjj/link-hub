@@ -1,0 +1,16 @@
+{
+  "id": "agentic-design-patterns-zh",
+  "topic": "agent",
+  "kind": "site",
+  "title": "Agentic Design Patterns 中文版",
+  "description": "谷歌 Agent 设计模式书籍的社区中文译本，系统介绍智能体构建、协作与评估模式，附在线阅读与电子书下载",
+  "audience": "适合希望用中文系统学习 Agent 设计模式的开发者",
+  "url": "https://github.com/xindoo/agentic-design-patterns",
+  "tags": [
+    "资源",
+    "书籍",
+    "进阶",
+    "GitHub 仓库",
+    "中译"
+  ]
+}

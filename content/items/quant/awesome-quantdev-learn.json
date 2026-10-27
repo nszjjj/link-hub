@@ -1,0 +1,15 @@
+{
+  "id": "awesome-quantdev-learn",
+  "topic": "quant",
+  "kind": "site",
+  "title": "Awesome-QuantDev-Learn",
+  "description": "汇总量化开发学习路线、C++/Python 实践、系统运维与面试资料的 GitHub 仓库",
+  "audience": "适合希望系统构建量化工程能力的开发者",
+  "url": "https://github.com/0voice/Awesome-QuantDev-Learn",
+  "tags": [
+    "资源",
+    "路线图",
+    "进阶",
+    "GitHub 仓库"
+  ]
+}

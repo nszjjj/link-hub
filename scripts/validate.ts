@@ -63,9 +63,6 @@ export function validateLinks(rootDir = PROJECT_ROOT): ValidationReport {
     }
     if (item.kind !== 'site') {
       const resources = resourcesOf(item)
-      if (item.tags.includes('免费') && (resources.length === 0 || resources.some((resource) => resource.access !== 'free'))) {
-        report.warnings.push({ path: `${itemPath}:tags`, itemId: item.id, message: '“免费”标签与资源访问条件不一致' })
-      }
       const hasPdf = resources.some((resource) => resource.format === 'pdf' || /\.pdf$/i.test(resource.file ?? ''))
       if (item.tags.includes('PDF') && !hasPdf) {
         report.warnings.push({ path: `${itemPath}:tags`, itemId: item.id, message: '“PDF”标签缺少对应的 PDF 资源' })

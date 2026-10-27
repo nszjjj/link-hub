@@ -1,0 +1,14 @@
+{
+  "id": "awesome-systematic-trading",
+  "topic": "quant",
+  "kind": "site",
+  "title": "Awesome Systematic Trading",
+  "description": "收集系统化交易库、论文策略、书籍与课程，并标注策略夏普比率的 GitHub 清单",
+  "audience": "适合查找量化策略与研究资料的研究者和交易者",
+  "url": "https://github.com/paperswithbacktest/awesome-systematic-trading",
+  "tags": [
+    "资源",
+    "进阶",
+    "GitHub 仓库"
+  ]
+}

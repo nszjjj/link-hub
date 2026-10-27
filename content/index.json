@@ -9,22 +9,40 @@
       "order": 1
     },
     {
+      "id": "a-shares",
+      "name": "A股",
+      "description": "A股行情、板块与 ETF 工具",
+      "order": 2
+    },
+    {
       "id": "web3",
       "name": "Web3",
       "description": "区块链基础与合约学习资料",
-      "order": 2
+      "order": 3
     },
     {
       "id": "daily",
       "name": "开发",
       "description": "开发文档、学习资料与技术实践",
-      "order": 3
+      "order": 4
     },
     {
       "id": "day-trading",
       "name": "交易",
       "description": "做交易相关的资料",
-      "order": 4
+      "order": 5
+    },
+    {
+      "id": "quant",
+      "name": "量化",
+      "description": "量化研究、策略与行业资料",
+      "order": 6
+    },
+    {
+      "id": "agent",
+      "name": "Agent",
+      "description": "智能体设计模式与工程实践",
+      "order": 7
     },
     {
       "id": "solana",
@@ -41,23 +59,65 @@
       "order": 2
     },
     {
+      "id": "crypto",
+      "name": "加密货币",
+      "parentId": "web3",
+      "description": "币圈工具、数据与行业资料",
+      "order": 3
+    },
+    {
       "id": "webgpu",
       "name": "WebGPU",
       "parentId": "daily",
       "description": "浏览器 GPU 渲染、WGSL 与计算着色器",
       "order": 1
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "parentId": "daily",
+      "description": "语法、所有权、练习与数据结构",
+      "order": 2
     }
   ],
   "itemFiles": [
     "items/stocks/finviz-map.json",
+    "items/a-shares/a-share-heatmap.json",
     "items/daily/mdn-docs.json",
     "items/web3/bitcoin-reading.json",
+    "items/web3/blockchain-roadmap.json",
+    "items/crypto/marketwebb.json",
+    "items/crypto/crypto-info.json",
     "items/daily/frontend-reading.json",
+    "items/ethereum/solidity-docs.json",
+    "items/ethereum/solidity-by-example.json",
+    "items/ethereum/remix-ide.json",
+    "items/ethereum/etherscan.json",
+    "items/ethereum/solidity-expert.json",
     "items/ethereum/ethereum-roadmap.json",
     "items/daily/frontend-roadmap.json",
+    "items/rust/rust-book-zh.json",
+    "items/rust/rustfinity.json",
+    "items/rust/rust-by-example.json",
+    "items/rust/tour-of-rust.json",
+    "items/rust/rustbook-algorithms.json",
     "items/day-trading/price-action.json",
+    "items/day-trading/ict-trading.json",
+    "items/day-trading/brooks-trading-blog.json",
+    "items/day-trading/bar-by-bar.json",
+    "items/day-trading/price-action-learning-path.json",
+    "items/day-trading/steven-price-action-notes.json",
+    "items/quant/awesome-quantdev-learn.json",
+    "items/quant/awesome-systematic-trading.json",
+    "items/quant/zhihu-quant-industry.json",
+    "items/quant/zhihu-quant-career.json",
+    "items/quant/zhihu-quant-factors.json",
+    "items/agent/agentic-design-patterns-zh.json",
+    "items/agent/learn-claude-code.json",
     "items/solana/solana-docs.json",
+    "items/solana/solana-cookbook.json",
     "items/solana/solana-explorer.json",
+    "items/solana/solana-playground.json",
     "items/solana/solana-roadmap.json",
     "items/webgpu/webgpu-fundamentals.json",
     "items/webgpu/webgpu-from-webgl.json",

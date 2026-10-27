@@ -1,0 +1,16 @@
+{
+  "id": "rustbook-algorithms",
+  "topic": "rust",
+  "kind": "site",
+  "title": "数据结构与算法（Rust 语言描述）",
+  "description": "用 Rust 实现栈、队列、树、图与排序算法的开源书籍，适合练习实现与复杂度分析",
+  "audience": "适合掌握 Rust 基础后练习数据结构与算法的读者",
+  "url": "https://github.com/QMHTMY/RustBook",
+  "tags": [
+    "资源",
+    "书籍",
+    "进阶",
+    "GitHub 仓库",
+    "中译"
+  ]
+}

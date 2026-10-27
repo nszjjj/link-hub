@@ -44,7 +44,7 @@ describe('头部与标签筛选', () => {
     window.history.replaceState(null, '', '/link-hub/?match=any')
     render(<Harness />)
     fireEvent.click(screen.getByRole('button', { name: '更多筛选' }))
-    fireEvent.click(screen.getByRole('button', { name: '免费' }))
+    fireEvent.click(screen.getByRole('button', { name: '资源' }))
     fireEvent.click(screen.getByRole('button', { name: 'PDF' }))
     fireEvent.click(screen.getByRole('radio', { name: '全部标签' }))
     expect(new URLSearchParams(window.location.search).get('match')).toBe('all')
