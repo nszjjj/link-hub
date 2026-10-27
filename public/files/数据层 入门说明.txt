@@ -1,0 +1,11 @@
+Link Hub 核心数据层入门说明
+
+这是本站维护者编写的公开示例资料，用于演示本地文件引用。
+
+1. 内容源位于 public/data/links.json。
+2. topics 定义主题；items 通过 topic 引用主题。
+3. kind 区分 site、reading-list 和 roadmap。
+4. 本地资料写作 files/文件名，通过 BASE_URL 生成访问地址。
+5. 使用 npm run validate 检查结构、文件引用与维护警告。
+
+本文件可自由阅读与分发。

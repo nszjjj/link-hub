@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@theme inline {
+  --font-sans: "Geist Variable", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-heading: var(--font-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: #f8f9fb;
+  --foreground: #20242b;
+  --card: #ffffff;
+  --card-foreground: #20242b;
+  --popover: #ffffff;
+  --popover-foreground: #20242b;
+  --primary: #586783;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f2f5;
+  --secondary-foreground: #667080;
+  --muted: #f0f2f5;
+  --muted-foreground: #667080;
+  --accent: #edf0f5;
+  --accent-foreground: #586783;
+  --destructive: #a94c50;
+  --border: #e3e6eb;
+  --input: #dce0e7;
+  --ring: #74829b;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40 motion-reduce:animate-none motion-reduce:transition-none;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  /* 系统选择减弱动效时，连同基础组件的折叠与占位动画一起关闭。 */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      @apply animate-none! transition-none!;
+    }
+  }
+}

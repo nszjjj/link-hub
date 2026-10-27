@@ -1,0 +1,14 @@
+{
+  "id": "finviz-map",
+  "topic": "stocks",
+  "kind": "site",
+  "title": "Finviz 板块热力图",
+  "description": "按板块查看涨跌分布，适合快速观察市场轮动",
+  "url": "https://finviz.com/map.ashx",
+  "tags": [
+    "工具",
+    "行情",
+    "可视化"
+  ],
+  "featured": true
+}

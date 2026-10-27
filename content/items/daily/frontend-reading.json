@@ -1,0 +1,28 @@
+{
+  "id": "frontend-reading",
+  "topic": "daily",
+  "kind": "reading-list",
+  "title": "前端基础阅读清单",
+  "description": "先建立浏览器与页面基础，再了解 TypeScript 的类型系统",
+  "audience": "适合准备开始前端开发的读者",
+  "books": [
+    {
+      "title": "MDN 学习 Web 开发",
+      "note": "推荐先读，配合练习学习基础概念",
+      "url": "https://developer.mozilla.org/zh-CN/docs/Learn_web_development",
+      "access": "free"
+    },
+    {
+      "title": "TypeScript Handbook",
+      "note": "具备 JavaScript 基础后阅读官方类型指南",
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+      "access": "free"
+    }
+  ],
+  "tags": [
+    "资源",
+    "书籍",
+    "免费",
+    "前端"
+  ]
+}

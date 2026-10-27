@@ -1,0 +1,51 @@
+{
+  "id": "solana-roadmap",
+  "topic": "solana",
+  "kind": "roadmap",
+  "title": "Solana 程序开发入门",
+  "description": "先理解账户与交易，再学习程序模型并完成本地实践",
+  "audience": "建议具备编程基础",
+  "estimatedEffort": "约 12–18 小时，按个人进度调整",
+  "tags": [
+    "资源",
+    "路线图",
+    "入门",
+    "免费",
+    "开发"
+  ],
+  "steps": [
+    {
+      "title": "账户与状态",
+      "description": "理解账户的所有权、数据与程序之间的关系",
+      "resources": [
+        {
+          "title": "Solana 账户模型",
+          "url": "https://solana.com/docs/core/accounts",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "交易与指令",
+      "description": "了解交易如何组织指令并更新链上状态",
+      "resources": [
+        {
+          "title": "交易基础",
+          "url": "https://solana.com/docs/core/transactions",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "程序与本地练习",
+      "description": "阅读程序模型文档，完成一个小型状态读写练习",
+      "resources": [
+        {
+          "title": "Solana 程序",
+          "url": "https://solana.com/docs/core/programs",
+          "access": "free"
+        }
+      ]
+    }
+  ]
+}

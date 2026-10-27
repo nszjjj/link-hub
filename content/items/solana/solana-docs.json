@@ -1,0 +1,15 @@
+{
+  "id": "solana-docs",
+  "topic": "solana",
+  "kind": "site",
+  "title": "Solana 开发者文档",
+  "description": "了解账户、交易与程序的工作方式，查阅官方开发指南",
+  "url": "https://solana.com/docs",
+  "tags": [
+    "资源",
+    "文档",
+    "免费",
+    "开发"
+  ],
+  "featured": true
+}

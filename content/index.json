@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-27",
+  "topics": [
+    {
+      "id": "stocks",
+      "name": "美股",
+      "description": "行情、板块与财报工具",
+      "order": 1
+    },
+    {
+      "id": "web3",
+      "name": "Web3",
+      "description": "区块链基础与合约学习资料",
+      "order": 2
+    },
+    {
+      "id": "daily",
+      "name": "开发",
+      "description": "开发文档、学习资料与技术实践",
+      "order": 3
+    },
+    {
+      "id": "day-trading",
+      "name": "交易",
+      "description": "做交易相关的资料",
+      "order": 4
+    },
+    {
+      "id": "solana",
+      "name": "Solana",
+      "parentId": "web3",
+      "description": "账户模型、链上工具与程序开发",
+      "order": 1
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "parentId": "web3",
+      "description": "智能合约与以太坊应用开发",
+      "order": 2
+    },
+    {
+      "id": "webgpu",
+      "name": "WebGPU",
+      "parentId": "daily",
+      "description": "浏览器 GPU 渲染、WGSL 与计算着色器",
+      "order": 1
+    }
+  ],
+  "itemFiles": [
+    "items/stocks/finviz-map.json",
+    "items/daily/mdn-docs.json",
+    "items/web3/bitcoin-reading.json",
+    "items/daily/frontend-reading.json",
+    "items/ethereum/ethereum-roadmap.json",
+    "items/daily/frontend-roadmap.json",
+    "items/day-trading/price-action.json",
+    "items/solana/solana-docs.json",
+    "items/solana/solana-explorer.json",
+    "items/solana/solana-roadmap.json",
+    "items/webgpu/webgpu-fundamentals.json",
+    "items/webgpu/webgpu-from-webgl.json",
+    "items/webgpu/tour-of-wgsl.json",
+    "items/webgpu/webgpu-samples.json",
+    "items/webgpu/mdn-webgpu-api.json",
+    "items/webgpu/webgpu-explainer.json",
+    "items/webgpu/awesome-webgpu.json",
+    "items/webgpu/compute-toys.json"
+  ]
+}

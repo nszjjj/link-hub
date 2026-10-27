@@ -1,0 +1,10 @@
+{
+  "id": "awesome-webgpu",
+  "topic": "webgpu",
+  "kind": "site",
+  "title": "awesome-webgpu",
+  "description": "社区维护的 WebGPU 教程、库与工具索引，适合持续探索生态和寻找项目参考",
+  "audience": "希望了解 WebGPU 生态、比较库与查找更多资料的开发者",
+  "url": "https://github.com/mikbry/awesome-webgpu",
+  "tags": ["资源", "免费", "开发"]
+}
