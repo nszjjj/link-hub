@@ -1,0 +1,15 @@
+{
+  "id": "solidity-expert",
+  "topic": "ethereum",
+  "kind": "site",
+  "title": "Solidity Expert 中文教程",
+  "description": "从 Solidity 基础、合约安全到 DApp 全栈与主流协议的进阶教程，适合系统进入 Web3 开发",
+  "audience": "适合具备编程基础、准备系统学习 Web3 开发的读者",
+  "url": "https://dukedaily.github.io/solidity-expert/cn/",
+  "tags": [
+    "资源",
+    "教程",
+    "进阶",
+    "开发"
+  ]
+}

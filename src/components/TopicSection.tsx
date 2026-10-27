@@ -1,4 +1,5 @@
 import type { MouseEvent, ReactNode } from 'react'
+import { Focus } from 'lucide-react'
 import type { TopicGroup } from '../lib/topics'
 import { cn } from '../lib/utils'
 import { Button } from './ui/button'
@@ -48,10 +49,9 @@ export function TopicSection({
       aria-labelledby={`heading-${group.topic.id}`}
       className="scroll-mt-[calc(var(--sticky-offset,88px)+24px)]"
     >
-      {/* 一级主题保留竖条与大留白；父级数量汇总子主题，条目只在直接归属处展示。 */}
       <div
         className={cn(
-          'mb-6 flex items-start justify-between gap-4 border-l-[3px] border-primary/30 pl-4',
+          'mb-6 flex items-start justify-between gap-4 border-l-[3px] border-primary/25 pl-4 transition-colors duration-200',
           active && 'border-primary',
         )}
       >
@@ -69,7 +69,7 @@ export function TopicSection({
             </p>
           )}
         </div>
-        <div className="flex shrink-0 flex-col items-end gap-1">
+        <div className="flex shrink-0 flex-col items-end gap-1.5">
           <TopicCount
             name={group.topic.name}
             matchedCount={group.matchedCount}
@@ -77,8 +77,15 @@ export function TopicSection({
             isFiltered={isFiltered}
           />
           {scopeId !== group.topic.id && (
-            <Button variant="ghost" aria-label={`只看 ${group.topic.name}`} onClick={() => onScopeChange(group.topic.id)}
-              className="min-h-12 rounded-md px-2 text-sm font-normal text-muted-foreground">只看此主题</Button>
+            <Button
+              variant="outline"
+              aria-label={`只看 ${group.topic.name}`}
+              onClick={() => onScopeChange(group.topic.id)}
+              className="min-h-11 gap-1.5 rounded-lg bg-card px-3 text-sm font-normal shadow-sm"
+            >
+              <Focus aria-hidden="true" className="hidden sm:block" />
+              只看此主题
+            </Button>
           )}
         </div>
       </div>
@@ -91,7 +98,7 @@ export function TopicSection({
               asChild
               variant="ghost"
               className={cn(
-                'h-auto min-h-12 max-w-full rounded-md px-3 py-2 text-sm font-normal whitespace-normal text-muted-foreground',
+                'h-auto min-h-11 max-w-full rounded-lg px-3 py-2 text-sm font-normal whitespace-normal text-muted-foreground transition-colors',
                 target.active && 'bg-accent text-primary',
               )}
             >

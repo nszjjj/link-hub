@@ -20,6 +20,11 @@ function isInside(directory: string, path: string): boolean {
   return remainder !== '' && remainder !== '..' && !remainder.startsWith(`..${sep}`) && !isAbsolute(remainder)
 }
 
+/** 报告路径统一使用 /，避免 Windows 上 relative() 产生反斜杠 */
+function reportPath(rootDir: string, path: string): string {
+  return relative(rootDir, path).split(sep).join('/')
+}
+
 function resourcesOf(item: Item): ResourceRef[] {
   if (item.kind === 'reading-list') return item.books
   if (item.kind === 'roadmap') return item.steps.flatMap((step) => step.resources)
@@ -63,9 +68,6 @@ export function validateLinks(rootDir = PROJECT_ROOT): ValidationReport {
     }
     if (item.kind !== 'site') {
       const resources = resourcesOf(item)
-      if (item.tags.includes('免费') && (resources.length === 0 || resources.some((resource) => resource.access !== 'free'))) {
-        report.warnings.push({ path: `${itemPath}:tags`, itemId: item.id, message: '“免费”标签与资源访问条件不一致' })
-      }
       const hasPdf = resources.some((resource) => resource.format === 'pdf' || /\.pdf$/i.test(resource.file ?? ''))
       if (item.tags.includes('PDF') && !hasPdf) {
         report.warnings.push({ path: `${itemPath}:tags`, itemId: item.id, message: '“PDF”标签缺少对应的 PDF 资源' })
@@ -98,19 +100,19 @@ export function validateLinks(rootDir = PROJECT_ROOT): ValidationReport {
     let entries
     try {
       if (!lstatSync(directory).isDirectory()) {
-        report.errors.push({ path: relative(rootDir, directory), message: '静态资源目录必须是普通目录，不能是符号链接' })
+        report.errors.push({ path: reportPath(rootDir, directory), message: '静态资源目录必须是普通目录，不能是符号链接' })
         return
       }
       entries = readdirSync(directory, { withFileTypes: true })
     } catch (error) {
       if (error instanceof Error && 'code' in error && error.code === 'ENOENT') return
-      report.errors.push({ path: relative(rootDir, directory), message: String(error) })
+      report.errors.push({ path: reportPath(rootDir, directory), message: String(error) })
       return
     }
     for (const entry of entries) {
       const path = join(directory, entry.name)
       if (entry.isSymbolicLink()) {
-        report.errors.push({ path: relative(rootDir, path), message: '静态资源目录不允许符号链接，请使用实际文件或外链' })
+        report.errors.push({ path: reportPath(rootDir, path), message: '静态资源目录不允许符号链接，请使用实际文件或外链' })
         continue
       }
       if (entry.isDirectory()) { inspectPublicFiles(path); continue }
@@ -118,7 +120,7 @@ export function validateLinks(rootDir = PROJECT_ROOT): ValidationReport {
       if (!isInside(join(publicDir, 'files'), path)) continue
       const size = statSync(path).size
       totalBytes += size
-      const issuePath = relative(rootDir, path)
+      const issuePath = reportPath(rootDir, path)
       if (size > 50 * MIB) report.errors.push({ path: issuePath, message: '单文件超过 50 MiB，请改用外链' })
       else if (size > 15 * MIB) report.warnings.push({ path: issuePath, message: '单文件超过 15 MiB，建议改用外链' })
       if (!referencedFiles.has(realpathSync(path))) report.warnings.push({ path: issuePath, message: '未引用资料，可考虑清理' })

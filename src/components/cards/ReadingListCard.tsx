@@ -1,6 +1,7 @@
 import { ArrowUpRight, BookOpen, Download } from 'lucide-react'
 import type { ReadingListItem } from '../../lib/schema'
 import { getReadingLabels, getResourceActions } from '../../lib/resourcePresentation'
+import { ItemTags } from '../ItemTags'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
@@ -30,9 +31,11 @@ export function ReadingListCard({
       onValueChange={(value) => onExpandedChange(Boolean(value))}
     >
       <AccordionItem value={item.id} className="border-0">
-        <Card className="gap-0 rounded-lg border border-border bg-card py-0 wrap-anywhere shadow-none ring-0">
-          <CardHeader className="flex flex-row items-start gap-3 rounded-t-lg p-5 pb-3">
-            <BookOpen className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden="true" />
+        <Card className="card-elevated gap-0 rounded-xl border border-border/80 bg-card py-0 wrap-anywhere ring-0">
+          <CardHeader className="flex flex-row items-start gap-3.5 rounded-t-xl p-5 pb-3">
+            <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/70 bg-muted/80 text-primary shadow-sm">
+              <BookOpen className="size-5" aria-hidden="true" />
+            </span>
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
                 <Heading className="min-w-0 max-w-full text-base leading-6 font-medium wrap-break-word">
@@ -41,7 +44,7 @@ export function ReadingListCard({
                 {item.featured && (
                   <Badge
                     variant="outline"
-                    className="rounded-md border-primary/15 bg-accent font-normal text-primary"
+                    className="rounded-md border-primary/20 bg-primary/8 font-normal text-primary"
                   >
                     推荐
                   </Badge>
@@ -62,7 +65,6 @@ export function ReadingListCard({
                 <span className="ml-2 text-muted-foreground">{labels.join('，')}</span>
               )}
             </p>
-            {/* 折叠态先给阅读起点，访客无需展开才能判断这份书单是否有用。 */}
             <p
               className="truncate text-sm leading-6 text-muted-foreground"
               title={item.books[0].title}
@@ -70,29 +72,19 @@ export function ReadingListCard({
               先读：<span className="text-foreground">{item.books[0].title}</span>
             </p>
           </CardContent>
-          <CardFooter className="flex-wrap justify-between gap-2 rounded-b-lg border-t-0 bg-transparent px-5 pt-1 pb-4">
-            <div className="flex min-w-0 flex-1 flex-wrap gap-1.5">
-              {item.tags.map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="secondary"
-                  className="h-auto min-h-6 rounded-md bg-muted font-normal text-muted-foreground"
-                >
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+          <CardFooter className="flex-wrap justify-between gap-2 rounded-b-xl border-t-0 bg-transparent px-5 pt-1 pb-4">
+            <ItemTags tags={item.tags} />
             <div className="shrink-0">
               <AccordionTrigger
                 headingLevel={headingLevel}
-                className="min-h-12 items-center gap-2 rounded-md px-3 py-2 text-sm text-primary hover:bg-accent hover:no-underline"
+                className="min-h-11 items-center gap-2 rounded-lg px-3 py-2 text-sm text-primary hover:bg-accent hover:no-underline"
               >
                 {expanded ? '收起书单' : '展开书单'}
               </AccordionTrigger>
             </div>
           </CardFooter>
-          <AccordionContent className="h-auto border-t border-border px-5 pt-2 pb-5 [&_a]:no-underline [&_p:not(:last-child)]:mb-0">
-            <ol className="divide-y divide-border">
+          <AccordionContent className="h-auto border-t border-border/80 px-5 pt-2 pb-5 [&_a]:no-underline [&_p:not(:last-child)]:mb-0">
+            <ol className="divide-y divide-border/80">
               {item.books.map((book, index) => (
                 <li key={`${book.title}-${index}`} className="py-4 last:pb-0">
                   <DetailHeading className="text-sm leading-6 font-medium wrap-break-word">
@@ -110,7 +102,7 @@ export function ReadingListCard({
                         key={action.href}
                         asChild
                         variant="outline"
-                        className="h-12 gap-2 rounded-md px-3 font-normal shadow-none"
+                        className="h-11 gap-2 rounded-lg px-3 font-normal shadow-none"
                       >
                         <a
                           href={action.href}

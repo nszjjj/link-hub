@@ -7,6 +7,15 @@ import { Button } from './ui/button'
 
 type Props = { filters: UseLinkFiltersResult }
 
+export function ContentCategoryLabel() {
+  return (
+    <span className="shrink-0 text-sm text-muted-foreground" aria-hidden="true">
+      <span className="hidden sm:inline">内容分类</span>
+      <span className="sm:hidden">分类</span>
+    </span>
+  )
+}
+
 export function TagChip({ filters, tag }: Props & { tag: string }) {
   return (
     <Button variant="ghost" aria-pressed={filters.selectedTags.includes(tag)} onClick={() => filters.toggleTag(tag)}

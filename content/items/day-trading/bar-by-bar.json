@@ -1,0 +1,15 @@
+{
+  "id": "bar-by-bar",
+  "topic": "day-trading",
+  "kind": "site",
+  "title": "Price Action Bar By Bar",
+  "description": "逐根 K 线复盘的价格行为学习站，提供回放模拟器、复盘方法、学习笔记与参考资料",
+  "audience": "适合希望用回放练习复盘的价格行为交易者",
+  "url": "https://barbybar.top/index.html",
+  "tags": [
+    "资源",
+    "工具",
+    "教程",
+    "price action"
+  ]
+}

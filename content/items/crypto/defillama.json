@@ -1,0 +1,13 @@
+{
+  "id": "defillama",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "DefiLlama",
+  "description": "查看 DeFi 协议 TVL 排名、各链资金分布与收益率数据",
+  "url": "https://defillama.com/",
+  "tags": [
+    "工具",
+    "区块链",
+    "可视化"
+  ]
+}

@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
 import { afterEach, describe, expect, it } from 'vitest'
 import { writeContentFixture } from '../test/contentFixtures'
+import { tsxCli } from '../test/tsx'
 import { generateData } from './generate-data'
 
 const roots: string[] = []
@@ -97,8 +98,8 @@ describe('聚合数据生成', () => {
     const project = resolve(dirname(fileURLToPath(import.meta.url)), '..')
     const cli = () =>
       spawnSync(
-        join(project, 'node_modules/.bin/tsx'),
-        [join(project, 'scripts/generate-data.ts'), root],
+        process.execPath,
+        [tsxCli, join(project, 'scripts/generate-data.ts'), root],
         { encoding: 'utf8' },
       )
     expect(cli().status).toBe(0)

@@ -1,0 +1,13 @@
+{
+  "id": "btc-dashboard",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "比特币看板",
+  "description": "汇总减半倒计时、MVRV、矿机关机价与恐惧贪婪指数等 BTC 周期指标",
+  "url": "https://fuckbtc.com/",
+  "tags": [
+    "工具",
+    "区块链",
+    "可视化"
+  ]
+}
