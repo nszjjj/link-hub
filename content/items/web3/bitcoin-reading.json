@@ -1,0 +1,39 @@
+{
+  "id": "bitcoin-reading",
+  "topic": "web3",
+  "kind": "reading-list",
+  "title": "比特币基础阅读资料",
+  "description": "从原始论文到技术书籍，逐步理解比特币系统的工作方式",
+  "audience": "适合希望理解区块链原理的读者",
+  "books": [
+    {
+      "title": "Bitcoin: A Peer-to-Peer Electronic Cash System",
+      "author": "Satoshi Nakamoto",
+      "note": "先读原始论文，理解系统要解决的问题",
+      "url": "https://bitcoin.org/bitcoin.pdf",
+      "format": "pdf",
+      "access": "free"
+    },
+    {
+      "title": "Mastering Bitcoin",
+      "author": "Andreas M. Antonopoulos 等",
+      "note": "在开源仓库中阅读，按章节了解技术细节",
+      "url": "https://github.com/bitcoinbook/bitcoinbook",
+      "access": "free"
+    },
+    {
+      "title": "本站数据层入门说明",
+      "author": "Link Hub 维护者",
+      "note": "原创示例文件，用于验证站内下载路径与中文文件名",
+      "file": "files/数据层 入门说明.txt",
+      "access": "free"
+    }
+  ],
+  "tags": [
+    "资源",
+    "书籍",
+    "PDF",
+    "免费",
+    "区块链"
+  ]
+}

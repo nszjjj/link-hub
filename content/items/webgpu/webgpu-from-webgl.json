@@ -1,0 +1,10 @@
+{
+  "id": "webgpu-from-webgl",
+  "topic": "webgpu",
+  "kind": "site",
+  "title": "WebGPU from WebGL",
+  "description": "对照 WebGL 理解管线、绑定与资源管理的差异，适合已有 WebGL 基础时先读",
+  "audience": "熟悉 WebGL，准备迁移到 WebGPU 的开发者",
+  "url": "https://webgpufundamentals.org/webgpu/lessons/webgpu-from-webgl.html",
+  "tags": ["资源", "教程", "免费", "开发"]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solana-explorer",
+  "topic": "solana",
+  "kind": "site",
+  "title": "Solana Explorer",
+  "description": "查询账户、交易和程序执行信息，辅助排查链上行为",
+  "url": "https://explorer.solana.com/",
+  "tags": [
+    "工具",
+    "免费",
+    "开发"
+  ]
+}

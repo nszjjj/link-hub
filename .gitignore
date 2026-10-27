@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.vite/
+*.tsbuildinfo
+.DS_Store
+*.local
+public/data/links.json
+public/data/.links-*.tmp

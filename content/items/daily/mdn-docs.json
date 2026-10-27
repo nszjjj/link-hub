@@ -1,0 +1,16 @@
+{
+  "id": "mdn-docs",
+  "topic": "daily",
+  "kind": "site",
+  "title": "MDN Web 文档",
+  "description": "查询 HTML、CSS 与 JavaScript 的用法及浏览器兼容性",
+  "audience": "适合学习和开发 Web 项目的读者",
+  "url": "https://developer.mozilla.org/zh-CN/",
+  "tags": [
+    "资源",
+    "文档",
+    "中文",
+    "免费"
+  ],
+  "featured": true
+}

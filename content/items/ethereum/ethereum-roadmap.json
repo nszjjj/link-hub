@@ -1,0 +1,47 @@
+{
+  "id": "ethereum-roadmap",
+  "topic": "ethereum",
+  "kind": "roadmap",
+  "title": "以太坊开发入门路线",
+  "description": "先理解账户与交易，再学习智能合约并完成本地实践",
+  "audience": "建议具备编程基础",
+  "estimatedEffort": "约 20–30 小时，按个人进度调整",
+  "steps": [
+    {
+      "title": "账户与交易基础",
+      "description": "认识账户、交易和执行环境",
+      "resources": [
+        {
+          "title": "以太坊开发者文档",
+          "url": "https://ethereum.org/zh/developers/docs/",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "智能合约入门",
+      "description": "了解 Solidity、合约状态和调用方式",
+      "resources": [
+        {
+          "title": "智能合约简介",
+          "url": "https://ethereum.org/zh/developers/docs/smart-contracts/",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "动手实践",
+      "description": "在本地环境实现一个简单合约，记录测试与学习结果",
+      "resources": []
+    }
+  ],
+  "tags": [
+    "资源",
+    "路线图",
+    "入门",
+    "免费",
+    "中文",
+    "开发"
+  ],
+  "featured": true
+}

@@ -1,0 +1,51 @@
+{
+  "id": "frontend-roadmap",
+  "topic": "daily",
+  "kind": "roadmap",
+  "title": "Web 页面基础路线",
+  "description": "通过结构、样式与脚本三个阶段建立独立制作网页的能力",
+  "audience": "适合零基础",
+  "steps": [
+    {
+      "title": "HTML 与页面结构",
+      "description": "理解语义标签和文档结构",
+      "resources": [
+        {
+          "title": "MDN HTML 指南",
+          "url": "https://developer.mozilla.org/zh-CN/docs/Web/HTML",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "CSS 与布局基础",
+      "description": "学习样式规则、盒模型和响应式布局",
+      "resources": [
+        {
+          "title": "MDN CSS 指南",
+          "url": "https://developer.mozilla.org/zh-CN/docs/Web/CSS",
+          "access": "free"
+        }
+      ]
+    },
+    {
+      "title": "JavaScript 与交互",
+      "description": "理解事件、数据与浏览器 API",
+      "resources": [
+        {
+          "title": "MDN JavaScript 指南",
+          "url": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+          "access": "free"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "资源",
+    "路线图",
+    "入门",
+    "免费",
+    "中文",
+    "前端"
+  ]
+}
