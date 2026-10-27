@@ -6,5 +6,10 @@
   "description": "可编辑并即时运行的 WGSL 导览，适合边实验边学习类型、控制流与资源绑定",
   "audience": "具备编程基础，开始学习 WebGPU 着色器语言的开发者",
   "url": "https://google.github.io/tour-of-wgsl/",
-  "tags": ["资源", "教程", "入门", "免费", "开发"]
+  "tags": [
+    "资源",
+    "教程",
+    "入门",
+    "开发"
+  ]
 }

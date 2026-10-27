@@ -6,5 +6,10 @@
   "description": "GPU for the Web 社区组的设计说明，适合进阶理解设备、管线与资源管理的取舍",
   "audience": "具备 WebGPU 基础，希望理解 API 设计动机的开发者",
   "url": "https://gpuweb.github.io/gpuweb/explainer/",
-  "tags": ["资源", "文档", "进阶", "免费", "开发"]
+  "tags": [
+    "资源",
+    "文档",
+    "进阶",
+    "开发"
+  ]
 }

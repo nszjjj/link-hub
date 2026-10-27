@@ -1,8 +1,9 @@
-export const DECISION_TAGS = ['入门', '进阶', '免费', '中文', 'PDF', '需注册'] as const
+export const DECISION_TAGS = ['入门', '进阶', 'PDF', '需注册'] as const
 
 export const ALLOWED_TAGS: readonly string[] = [
   ...DECISION_TAGS, '资源', '工具', '行情', '可视化', '书籍', '路线图',
   '文档', '教程', 'EPUB', '付费', '开发', '区块链', '前端', 'API',
+  '中译', 'price action', 'Liquidity', 'GitHub 仓库',
 ]
 
 export const TAG_GROUPS = [
@@ -26,9 +27,8 @@ export const TAG_DEFINITIONS: Readonly<Record<string, { group: TagGroupId; prima
   路线图: { group: 'content', primary: 4 },
   PDF: { group: 'format' },
   EPUB: { group: 'format' },
-  免费: { group: 'access' },
   付费: { group: 'access' },
-  中文: { group: 'language' },
+  中译: { group: 'language' },
   入门: { group: 'level' },
   进阶: { group: 'level' },
   需注册: { group: 'account' },

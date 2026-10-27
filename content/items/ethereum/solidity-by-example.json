@@ -1,0 +1,14 @@
+{
+  "id": "solidity-by-example",
+  "topic": "ethereum",
+  "kind": "site",
+  "title": "Solidity by Example",
+  "description": "收录大量 Solidity 示例合约与代码片段，按主题演示语法和常见用法，适合边学边查",
+  "audience": "适合已掌握基础语法、希望参考实例的开发者",
+  "url": "https://solidity-by-example.org/",
+  "tags": [
+    "资源",
+    "教程",
+    "开发"
+  ]
+}

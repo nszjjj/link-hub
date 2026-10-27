@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import type { SiteItem } from '../../lib/schema'
 import { assetUrl } from '../../lib/paths'
+import { ItemTags } from '../ItemTags'
 import { Badge } from '../ui/badge'
 import { Card, CardContent, CardFooter, CardHeader } from '../ui/card'
 
@@ -62,17 +63,7 @@ export function SiteCard({ item, headingLevel = 3 }: { item: SiteItem; headingLe
           </p>
         </CardContent>
         <CardFooter className="justify-between gap-3 rounded-b-lg border-t-0 bg-transparent px-5 pt-0 pb-5">
-          <div className="flex min-w-0 flex-wrap gap-1.5">
-            {item.tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="h-auto min-h-6 rounded-md bg-muted px-2 font-normal text-muted-foreground"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
+          <ItemTags tags={item.tags} />
           <ArrowUpRight
             className="size-4 shrink-0 text-muted-foreground group-hover:text-primary"
             aria-hidden="true"

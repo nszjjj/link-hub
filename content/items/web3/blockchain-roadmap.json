@@ -1,0 +1,16 @@
+{
+  "id": "blockchain-roadmap",
+  "topic": "web3",
+  "kind": "site",
+  "title": "roadmap.sh 区块链路线图",
+  "description": "以交互路线图梳理区块链基础、共识机制与智能合约等主题，可对照检查学习进度",
+  "audience": "适合希望规划区块链学习路径的开发者",
+  "url": "https://roadmap.sh/blockchain",
+  "tags": [
+    "资源",
+    "路线图",
+    "入门",
+    "区块链",
+    "开发"
+  ]
+}

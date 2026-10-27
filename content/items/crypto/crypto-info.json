@@ -1,0 +1,15 @@
+{
+  "id": "crypto-info",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "crypto_info 币圈资源大全",
+  "description": "汇总交易所、行情与链上数据工具、钱包、公链浏览器及新手教程的 GitHub 仓库",
+  "audience": "适合加密货币新手和爱好者",
+  "url": "https://github.com/Tangent-Wei/crypto_info",
+  "tags": [
+    "资源",
+    "工具",
+    "区块链",
+    "GitHub 仓库"
+  ]
+}

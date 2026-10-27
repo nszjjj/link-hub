@@ -1,0 +1,12 @@
+{
+  "id": "macromicro",
+  "topic": "macro",
+  "kind": "site",
+  "title": "MacroMicro 财经 M 平方",
+  "description": "查询 132 个国家的 CPI、利率、就业与 GDP 等宏观指标和周期图表",
+  "url": "https://en.macromicro.me/",
+  "tags": [
+    "工具",
+    "可视化"
+  ]
+}

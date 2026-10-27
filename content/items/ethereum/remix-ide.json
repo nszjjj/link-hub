@@ -1,0 +1,13 @@
+{
+  "id": "remix-ide",
+  "topic": "ethereum",
+  "kind": "site",
+  "title": "Remix IDE",
+  "description": "浏览器中的 Solidity 在线 IDE，可编写、编译、部署和调试合约，适合快速验证代码与试验想法",
+  "audience": "适合快速验证合约代码和排查问题的开发者",
+  "url": "https://remix.ethereum.org/",
+  "tags": [
+    "工具",
+    "开发"
+  ]
+}

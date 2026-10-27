@@ -7,9 +7,9 @@ import { makeData } from '../../test/fixtures'
 import { SiteHeader } from './SiteHeader'
 
 const source = LinkDataSchema.parse(makeData())
-function Harness() {
+function Harness({ currentTopic }: { currentTopic?: string }) {
   const filters = useLinkFilters(source)
-  return <SiteHeader filters={filters} />
+  return <SiteHeader filters={filters} currentTopic={currentTopic} />
 }
 
 beforeEach(() => {
@@ -24,6 +24,14 @@ describe('头部与标签筛选', () => {
     fireEvent.change(screen.getByRole('searchbox', { name: '搜索资源' }), { target: { value: 'Solidity' } })
     vi.advanceTimersByTime(200)
     expect(new URLSearchParams(window.location.search).get('q')).toBe('Solidity')
+  })
+  it('进入主题范围后隐藏头部当前主题，避免与范围提示重复', () => {
+    render(<Harness currentTopic="Web3" />)
+    expect(screen.getByText('Web3')).toBeTruthy()
+    cleanup()
+    window.history.replaceState(null, '', '/link-hub/?topic=web3')
+    render(<Harness currentTopic="Web3" />)
+    expect(screen.queryByText('Web3')).toBeNull()
   })
   it('常用入口和完整标签区共用选择状态，可移除及清空', () => {
     render(<Harness />)
@@ -44,7 +52,7 @@ describe('头部与标签筛选', () => {
     window.history.replaceState(null, '', '/link-hub/?match=any')
     render(<Harness />)
     fireEvent.click(screen.getByRole('button', { name: '更多筛选' }))
-    fireEvent.click(screen.getByRole('button', { name: '免费' }))
+    fireEvent.click(screen.getByRole('button', { name: '资源' }))
     fireEvent.click(screen.getByRole('button', { name: 'PDF' }))
     fireEvent.click(screen.getByRole('radio', { name: '全部标签' }))
     expect(new URLSearchParams(window.location.search).get('match')).toBe('all')

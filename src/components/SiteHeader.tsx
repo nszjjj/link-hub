@@ -70,16 +70,18 @@ export function SiteHeader({ filters, currentTopic, headerRef, tagBarRef }: Site
               <Library className="size-5 text-primary" aria-hidden="true" />
               <h1 className="text-lg font-semibold tracking-tight">Link Hub</h1>
             </a>
-            <p className="mt-1 hidden truncate text-sm text-muted-foreground md:block">
-              {currentTopic ? (
-                <>
-                  <span className="sr-only">当前主题：</span>
-                  {currentTopic}
-                </>
-              ) : (
-                '个人主题导航'
-              )}
-            </p>
+            {!filters.topicId && (
+              <p className="mt-1 hidden truncate text-sm text-muted-foreground md:block">
+                {currentTopic ? (
+                  <>
+                    <span className="sr-only">当前主题：</span>
+                    {currentTopic}
+                  </>
+                ) : (
+                  '个人主题导航'
+                )}
+              </p>
+            )}
           </div>
           <div className="hidden min-w-0 flex-1 md:block">{searchField(false)}</div>
           <Button

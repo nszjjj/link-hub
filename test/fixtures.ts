@@ -15,7 +15,7 @@ export function makeData() {
         title: '行情图表',
         description: '查看板块表现',
         url: 'https://example.com/charts',
-        tags: ['工具', '免费', '中文'],
+        tags: ['工具'],
       },
       {
         id: 'books',
@@ -23,7 +23,7 @@ export function makeData() {
         kind: 'reading-list',
         title: '交易书单',
         description: '理解交易基础',
-        tags: ['资源', 'PDF', '免费'],
+        tags: ['资源', 'PDF'],
         books: [
           {
             title: 'Market Basics',
@@ -40,7 +40,7 @@ export function makeData() {
         kind: 'roadmap',
         title: '合约路线',
         description: '建立开发基础',
-        tags: ['资源', '入门'],
+        tags: ['资源', '入门', '进阶'],
         steps: [
           {
             title: '智能合约',

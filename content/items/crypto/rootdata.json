@@ -1,0 +1,12 @@
+{
+  "id": "rootdata",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "RootData 加密融资情报",
+  "description": "查询加密项目的团队、融资轮次与投资机构，梳理项目与机构的投资关系",
+  "url": "https://rootdata.com/",
+  "tags": [
+    "工具",
+    "区块链"
+  ]
+}

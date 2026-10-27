@@ -1,4 +1,5 @@
 import type { MouseEvent, ReactNode } from 'react'
+import { Focus } from 'lucide-react'
 import type { TopicGroup } from '../lib/topics'
 import { cn } from '../lib/utils'
 import { Button } from './ui/button'
@@ -77,8 +78,11 @@ export function TopicSection({
             isFiltered={isFiltered}
           />
           {scopeId !== group.topic.id && (
-            <Button variant="ghost" aria-label={`只看 ${group.topic.name}`} onClick={() => onScopeChange(group.topic.id)}
-              className="min-h-12 rounded-md px-2 text-sm font-normal text-muted-foreground">只看此主题</Button>
+            <Button variant="outline" aria-label={`只看 ${group.topic.name}`} onClick={() => onScopeChange(group.topic.id)}
+              className="min-h-12 gap-1.5 rounded-md bg-card px-3 text-sm font-normal">
+              <Focus aria-hidden="true" className="hidden sm:block" />
+              只看此主题
+            </Button>
           )}
         </div>
       </div>

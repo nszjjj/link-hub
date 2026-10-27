@@ -1,0 +1,13 @@
+{
+  "id": "coingecko",
+  "topic": "crypto",
+  "kind": "site",
+  "title": "CoinGecko",
+  "description": "查询加密货币价格、市值、交易量与板块排行，覆盖大量币种和交易对",
+  "url": "https://www.coingecko.com/",
+  "tags": [
+    "工具",
+    "区块链",
+    "行情"
+  ]
+}

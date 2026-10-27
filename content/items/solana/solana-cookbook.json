@@ -1,0 +1,15 @@
+{
+  "id": "solana-cookbook",
+  "topic": "solana",
+  "kind": "site",
+  "title": "Solana Cookbook 中文版",
+  "description": "按核心概念、开发指南与代码片段组织的中文手册，适合开发时查询账户、交易与 PDA 等主题",
+  "audience": "适合希望边做边查的 Solana 开发者",
+  "url": "https://solanacookbook.com/zh/",
+  "tags": [
+    "资源",
+    "文档",
+    "开发",
+    "中译"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "etherscan",
+  "topic": "ethereum",
+  "kind": "site",
+  "title": "Etherscan 区块浏览器",
+  "description": "以太坊区块浏览器，可查询地址、交易、区块、合约和代币信息，辅助核对链上数据",
+  "audience": "适合核对链上交易与合约数据的开发者",
+  "url": "https://etherscan.io/",
+  "tags": [
+    "工具",
+    "开发"
+  ]
+}

@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowUpRight, Download, Map } from 'lucide-react'
 import type { RoadmapItem } from '../../lib/schema'
 import { getResourceActions } from '../../lib/resourcePresentation'
+import { ItemTags } from '../ItemTags'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
@@ -82,17 +83,7 @@ export function RoadmapCard({
             </ol>
           </CardContent>
           <CardFooter className="flex-wrap justify-between gap-2 rounded-b-lg border-t-0 bg-transparent px-5 pt-1 pb-4 md:px-6">
-            <div className="flex min-w-0 flex-1 flex-wrap gap-1.5">
-              {item.tags.map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="secondary"
-                  className="h-auto min-h-6 rounded-md bg-muted font-normal text-muted-foreground"
-                >
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+            <ItemTags tags={item.tags} />
             <div className="shrink-0">
               <AccordionTrigger
                 headingLevel={headingLevel}

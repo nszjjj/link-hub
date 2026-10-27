@@ -1,0 +1,14 @@
+{
+  "id": "a-share-heatmap",
+  "topic": "a-shares",
+  "kind": "site",
+  "title": "大盘云图",
+  "description": "按行业板块展示沪深 A 股实时涨跌热力图，支持缩放查看个股与当日复盘",
+  "audience": "适合快速观察 A 股整体强弱与板块轮动",
+  "url": "https://52etf.site/",
+  "tags": [
+    "工具",
+    "行情",
+    "可视化"
+  ]
+}
