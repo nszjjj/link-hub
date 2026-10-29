@@ -10,7 +10,7 @@ function SiteIcon({ item }: { item: SiteItem }) {
   const [failed, setFailed] = useState(false)
   return (
     <span
-      className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-md border border-border bg-muted text-sm font-medium text-primary"
+      className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/70 bg-muted/80 text-sm font-medium text-primary shadow-sm"
       aria-hidden="true"
     >
       {item.icon && !failed ? (
@@ -37,20 +37,19 @@ export function SiteCard({ item, headingLevel = 3 }: { item: SiteItem; headingLe
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${item.title}，在新标签页打开`}
-      className="group block h-full rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group block h-full rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      {/* 整卡只包含一个链接；轻边框变化提供反馈，不用抬升阴影抢占主题层级。 */}
-      <Card className="h-full gap-0 rounded-lg border border-border bg-card py-0 wrap-anywhere shadow-none ring-0 transition-colors group-hover:border-primary/40 group-hover:bg-accent/30 motion-reduce:transition-none">
-        <CardHeader className="flex flex-row items-start gap-3 rounded-t-lg p-5 pb-3">
+      <Card className="card-elevated h-full gap-0 rounded-xl border border-border/80 bg-card py-0 wrap-anywhere ring-0 transition-colors group-hover:border-primary/35 group-hover:bg-accent/40">
+        <CardHeader className="flex flex-row items-start gap-3.5 rounded-t-xl p-5 pb-3">
           <SiteIcon key={item.icon ?? item.id} item={item} />
           <div className="min-w-0 flex-1">
-            <Heading className="text-base leading-6 font-medium wrap-break-word">
+            <Heading className="text-base leading-6 font-medium wrap-break-word group-hover:text-primary transition-colors">
               {item.title}
             </Heading>
             {item.featured && (
               <Badge
                 variant="outline"
-                className="mt-2 rounded-md border-primary/15 bg-accent font-normal text-primary"
+                className="mt-2 rounded-md border-primary/20 bg-primary/8 font-normal text-primary"
               >
                 推荐
               </Badge>
@@ -62,10 +61,10 @@ export function SiteCard({ item, headingLevel = 3 }: { item: SiteItem; headingLe
             {item.description}
           </p>
         </CardContent>
-        <CardFooter className="justify-between gap-3 rounded-b-lg border-t-0 bg-transparent px-5 pt-0 pb-5">
+        <CardFooter className="justify-between gap-3 rounded-b-xl border-t-0 bg-transparent px-5 pt-0 pb-5">
           <ItemTags tags={item.tags} />
           <ArrowUpRight
-            className="size-4 shrink-0 text-muted-foreground group-hover:text-primary"
+            className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
             aria-hidden="true"
           />
         </CardFooter>

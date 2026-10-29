@@ -4,6 +4,7 @@ import type { UseLinkFiltersResult } from '../hooks/useLinkFilters'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { TagFilter } from './TagFilter'
+import { ThemeToggle } from './ThemeToggle'
 
 type SiteHeaderProps = {
   filters: UseLinkFiltersResult
@@ -38,7 +39,7 @@ export function SiteHeader({ filters, currentTopic, headerRef, tagBarRef }: Site
         enterKeyHint="search"
         value={filters.keyword}
         onChange={(event) => filters.setKeyword(event.target.value)}
-        className="h-12 rounded-md border-border bg-card pr-12 pl-10 text-sm shadow-none [&::-webkit-search-cancel-button]:hidden"
+        className="h-11 rounded-xl border-border/80 bg-card pr-11 pl-10 text-sm shadow-sm transition-[border-color,box-shadow] focus-visible:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary/20 [&::-webkit-search-cancel-button]:hidden"
       />
       {filters.keyword && (
         <Button
@@ -46,7 +47,7 @@ export function SiteHeader({ filters, currentTopic, headerRef, tagBarRef }: Site
           size="icon"
           aria-label="清除关键词"
           onClick={() => filters.setKeyword('')}
-          className="absolute top-0 right-0 size-12 rounded-md text-muted-foreground"
+          className="absolute top-0 right-0 size-11 rounded-xl text-muted-foreground"
         >
           <X aria-hidden="true" />
         </Button>
@@ -56,22 +57,21 @@ export function SiteHeader({ filters, currentTopic, headerRef, tagBarRef }: Site
 
   return (
     <>
-      {/* 用稳定的核心栏承载高频操作；移动端不把完整标签面板固定在屏幕上。 */}
       <header
         ref={headerRef}
-        className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur-sm"
+        className="sticky top-0 z-30 border-b border-border/80 bg-background/85 backdrop-blur-md"
       >
-        <div className="mx-auto flex max-w-[1120px] flex-wrap items-center gap-x-6 gap-y-3 px-5 py-3 sm:px-8 md:flex-nowrap md:py-4">
+        <div className="mx-auto flex max-w-[1120px] flex-wrap items-center gap-x-4 gap-y-3 px-5 py-3 sm:px-8 md:flex-nowrap md:py-3.5">
           <div className="min-w-0 flex-1 md:min-w-40 md:flex-none">
             <a
               href={import.meta.env.BASE_URL}
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring md:min-h-0"
+              className="inline-flex min-h-11 items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring md:min-h-0"
             >
               <Library className="size-5 text-primary" aria-hidden="true" />
               <h1 className="text-lg font-semibold tracking-tight">Link Hub</h1>
             </a>
             {!filters.topicId && (
-              <p className="mt-1 hidden truncate text-sm text-muted-foreground md:block">
+              <p className="mt-0.5 hidden truncate text-sm text-muted-foreground md:block">
                 {currentTopic ? (
                   <>
                     <span className="sr-only">当前主题：</span>
@@ -84,39 +84,43 @@ export function SiteHeader({ filters, currentTopic, headerRef, tagBarRef }: Site
             )}
           </div>
           <div className="hidden min-w-0 flex-1 md:block">{searchField(false)}</div>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label={
-              filters.keyword ? '聚焦搜索' : mobileSearchVisible ? '收起搜索' : '展开搜索'
-            }
-            aria-expanded={mobileSearchVisible}
-            aria-controls={`${searchId}-mobile-panel`}
-            onClick={() => {
-              if (mobileSearchVisible && !filters.keyword) setSearchOpen(false)
-              else {
-                setSearchOpen(true)
-                mobileSearch.current?.focus()
+          <div className="flex items-center gap-0.5">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label={
+                filters.keyword ? '聚焦搜索' : mobileSearchVisible ? '收起搜索' : '展开搜索'
               }
-            }}
-            className="size-12 rounded-md text-muted-foreground md:hidden"
-          >
-            <Search aria-hidden="true" />
-          </Button>
+              aria-expanded={mobileSearchVisible}
+              aria-controls={`${searchId}-mobile-panel`}
+              onClick={() => {
+                if (mobileSearchVisible && !filters.keyword) setSearchOpen(false)
+                else {
+                  setSearchOpen(true)
+                  mobileSearch.current?.focus()
+                }
+              }}
+              className="size-11 rounded-lg text-muted-foreground md:hidden"
+            >
+              <Search aria-hidden="true" />
+            </Button>
+          </div>
           {mobileSearchVisible && (
             <div id={`${searchId}-mobile-panel`} className="w-full md:hidden">
               {searchField(true)}
             </div>
           )}
-
         </div>
       </header>
-      {!filters.topicId && <TagFilter
-        filters={filters}
-        expanded={tagsExpanded}
-        onExpandedChange={setTagsExpanded}
-        stickyRef={tagBarRef}
-      />}
+      {!filters.topicId && (
+        <TagFilter
+          filters={filters}
+          expanded={tagsExpanded}
+          onExpandedChange={setTagsExpanded}
+          stickyRef={tagBarRef}
+        />
+      )}
     </>
   )
 }
